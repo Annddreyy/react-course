@@ -1,23 +1,15 @@
-import './App.css';
-import Header from './Header';
-import Footer from './Footer';
-
+import "./App.css";
+import Profile from "./components/Profile";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 const App = () => {
-  return (
-    <div className="App">
-      <Header />
-      <ul>
-        <li>
-          1
-        </li>
-        <li>
-          2
-        </li>
-      </ul>
-      MyPage
-      <Footer />
-    </div>
-  )
-}
+	return (
+		<div className="App">
+            <Header />
+			<Navbar />
+			<Profile />
+		</div>
+	);
+};
 
 export default App;
