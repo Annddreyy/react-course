@@ -1,23 +1,13 @@
 import React from "react";
+import classes from './Header.module.css'
+
+console.log( classes );
 
 const Header = () => {
     return (
-        <nav className="left-navigation">
-			<ul>
-				<li>
-					<a href="/profile">Profile</a>
-				</li>
-				<li>
-					<a href="/messages">Messages</a>
-				</li>
-				<li>
-					<a href="/music">Music</a>
-				</li>
-				<li>
-					<a href="/settings">Settings</a>
-				</li>
-			</ul>
-		</nav>
+        <header className={classes.header}>
+			<img src="https://jnsenfeng.ru/images/vk.png" alt=""></img>
+		</header>
     )
 };
 

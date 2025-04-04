@@ -1,0 +1,13 @@
+.left-navigation {
+    grid-area: nav;
+    background-color: lightcoral;
+}
+
+.items {
+    list-style-type: none;
+}
+
+.item {
+    text-decoration: none;
+    color: black;
+}

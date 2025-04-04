@@ -7,31 +7,7 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.header {
-    grid-area: header;
-    background-color: green;
-}
-
-ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.header > img {
-    width: 30px;
-    height: 30px;
-}
-
 .main {
     grid-area: main;
     background-color: lightblue;
-}
-
-.left-navigation {
-    grid-area: nav;
-    background-color: lightcoral;
 }
