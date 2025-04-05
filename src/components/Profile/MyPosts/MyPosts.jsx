@@ -12,8 +12,8 @@ const MyPosts = () => {
                 <input type="submit" value="Опубликовать" />
             </div>
             <div>
-                <Post />
-                <Post />
+                <Post message="message1" />
+                <Post message="message2" />
             </div>
         </div>
     )
