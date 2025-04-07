@@ -4,19 +4,33 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = () => {
+    let dialogsData = [
+        { id: 1, name: 'Andrey' },
+        { id: 2, name: 'Katya' },
+        { id: 3, name: 'Ivan' },
+        { id: 4, name: 'Pete' },
+        { id: 5, name: 'Petr' }
+    ]
+
+    let dialogElements = dialogsData.map(elem => <DialogItem name={elem.name} id={elem.id} />);
+
+    let messagesData = [
+        { id: 1, message: 'Hi' },
+        { id: 2, message: 'Hello!' },
+        { id: 3, message: 'How are you?' },
+        { id: 4, message: 'All ok' },
+        { id: 5, message: 'Thank you' }
+    ]
+
+    let messageElements = messagesData.map(elem => <Message message={elem.message} id={elem.id} />)
+
     return (
         <div className={classes.dialogs}>
             <div className={classes['dialog-items']}>
-                <DialogItem name="Andrey" id="1" />
-                <DialogItem name="Katya" id="2" />
-                <DialogItem name="Ivan" id="3" />
-                <DialogItem name="Pete" id="4" />
-                <DialogItem name="Petr" id="5" />
+                { dialogElements }
             </div>
             <div className={classes.messages}>
-                <Message message="How are you?" />
-                <Message message="Hello" />
-                <Message message="All cool" />
+                { messageElements }
             </div>
         </div>
     )
