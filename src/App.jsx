@@ -11,7 +11,7 @@ const App = (props) => {
 		<BrowserRouter>
 			<div className="App">
 				<Header />
-				<Navbar />
+				<Navbar state={props.appState.sidebar} />
 				<main className="main">
 					<Routes>
 						<Route path="/dialogs/*" element={

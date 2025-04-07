@@ -22,6 +22,14 @@ let state = {
             { id: 4, name: "Pete" },
             { id: 5, name: "Petr" },
         ]
+    },
+    sidebar: {
+        users: [ 
+            { id: 1, name: 'Andrey' },
+            { id: 2, name: 'Ivan' },
+            { id: 3, name: 'Petr' },
+            { id: 4, name: 'Katya' }
+        ]
     }
 };
 
