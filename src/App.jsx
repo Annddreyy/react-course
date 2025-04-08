@@ -21,6 +21,8 @@ const App = (props) => {
 					<Route path="/profile" element={
 						<Profile 
 						state={props.appState.profilePage} 
+						addPost={props.addPost} 
+						setPostText={props.setPostText}
 						/>
 					} />
 				</Routes>
