@@ -2,15 +2,28 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import { addNewMessageActionCreator, updateMessageActionCreator } from "../../redux/state";
 
 const Dialogs = (props) => {
     let dialogElements = props.state.dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} />);
     let messageElements = props.state.messages.map(elem => <Message message={elem.message} id={elem.id} />)
+    
     const newMessageElement = React.createRef();
+
+    const updateMessage = () => {
+        const text = newMessageElement.current.value;
+        let action = updateMessageActionCreator(text);
+        props.dispatch(action);
+    }
+
     const addMessage = () => {
         const text = newMessageElement.current.value;
-        let action = '';
+        let action = addNewMessageActionCreator(text);
+        props.dispatch(action);
     }
+
+    console.log( props );
+
     return (
         <div className={classes.dialogs}>
             <div className={classes['dialog-items']}>
@@ -18,8 +31,8 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messages}>
                 { messageElements }
-                <input type="text" ref={newMessageElement} />
-                <input type="submit" value="Отправить" onClick={ addMessage }/>
+                <textarea ref={newMessageElement} onChange={ updateMessage } value={props.state.newMessage} />
+                <input type="submit" value="Отправить" onClick={ addMessage } />
             </div>
         </div>
     )
