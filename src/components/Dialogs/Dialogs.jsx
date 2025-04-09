@@ -9,7 +9,7 @@ const Dialogs = (props) => {
     const newMessageElement = React.createRef();
     const addMessage = () => {
         const text = newMessageElement.current.value;
-        console.log( text );
+        let action = '';
     }
     return (
         <div className={classes.dialogs}>
