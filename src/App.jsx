@@ -7,6 +7,7 @@ import {Route, Routes} from 'react-router-dom'
 
 
 const App = (props) => {
+	debugger;
 	return (
 		<div className="App">
 			<Header />

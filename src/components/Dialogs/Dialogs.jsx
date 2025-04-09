@@ -2,7 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import { addNewMessageActionCreator, updateMessageActionCreator } from "../../redux/state";
+import { addNewMessageActionCreator, updateMessageActionCreator } from "../../redux/messagesReducer";
 
 const Dialogs = (props) => {
     let dialogElements = props.state.dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} />);
@@ -22,7 +22,6 @@ const Dialogs = (props) => {
         props.dispatch(action);
     }
 
-    console.log( props );
 
     return (
         <div className={classes.dialogs}>
