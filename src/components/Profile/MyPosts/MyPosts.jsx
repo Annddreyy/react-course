@@ -3,7 +3,6 @@ import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    debugger;
     let postElements = props.posts.map(elem => <Post message={elem.message} likesCount={elem.likesCount} id={elem.id} />);
     
     let addPost = () => {
@@ -16,6 +15,7 @@ const MyPosts = (props) => {
     };
 
     const newPostELement = React.createRef();
+
     return (
         <div>
             My posts
@@ -23,9 +23,9 @@ const MyPosts = (props) => {
                 <textarea 
                 name="new_post" 
                 id="new_post" 
-                ref={newPostELement} 
-                onChange={onPostChange} 
-                value={props.postText} 
+                ref={ newPostELement } 
+                onChange={ onPostChange } 
+                value={ props.postText } 
                 />
                 <input type="submit" value="Опубликовать" onClick={ addPost } />
             </div>

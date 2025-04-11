@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import User from "./User/User";
 
 const Navbar = (props) => {
-	let users = props.state.users.map(user => <User name={user.name} id={user.id} />);
+	let state = props.sidebar;
+
+	let users = state.users.map(user => <User name={user.name} id={user.id} />);
     return (
         <nav className={classes['left-navigation']}>
 			<ul className={classes.items}>
