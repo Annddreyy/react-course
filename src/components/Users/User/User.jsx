@@ -1,4 +1,5 @@
 import React from "react";
+import photo from '../../../assets/people.jpeg'
 
 const User = (props) => {
     let follow = () => {
@@ -13,7 +14,7 @@ const User = (props) => {
         <div>
             <span>
                 <div>
-                    <img src={props.photoURL} alt="" />
+                    <img src={ props.photo ? props.photo : photo } alt="" />
                 </div>
                 { props.followed 
                     ? <button onClick={unfollow}>Unfollow</button> 
@@ -21,12 +22,12 @@ const User = (props) => {
             </span>
             <span>
                 <div>
-                    <p>{ props.fullName }</p>
+                    <p>{ props.name }</p>
                     <p>{ props.status }</p>
                 </div>
                 <div>
-                    <p>{ props.city }</p>
-                    <p>{ props.country }</p>
+                    <p>Penza</p>
+                    <p>Country</p>
                 </div>
             </span>
         </div>
