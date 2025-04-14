@@ -1,7 +1,28 @@
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SET_PROFILE_INFORMATION = 'SET_PROFILE_INFORMATION';
 
 const initialState = {
+    profileInformation: {
+        aboutMe: 'efvefv',
+        contacts: {
+            facebook: 'link',
+            website: 'link',
+            vk: 'link',
+            twitter: 'link',
+            instagram: 'link',
+            youtube: 'link',
+            github: 'link',
+            mainLink: 'link'
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: 'описание',
+        fullName: 'Ivanov Ivan',
+        photos: {
+            small: 'photo_small.jpg',
+            large: 'photo_large.jpg'
+        }
+    },
     posts: [
         { id: 1, message: "My first post", likesCount: 12 },
         { id: 2, message: "My second post", likesCount: 21 },
@@ -22,22 +43,29 @@ const profileReducer = (state = initialState, action) => {
                 }],
                 postText: ''
             };
-
         case UPDATE_NEW_POST_TEXT:
             return {
                 ...state,
                 postText: action.postText
             };
+        case SET_PROFILE_INFORMATION:
+            return {
+                ...state,
+                profileInformation: action.profileInformation
+            }
         default:
             return state;
     }
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
-
 export const updatePostActionCreator = (text) => ({
     type: UPDATE_NEW_POST_TEXT,
     postText: text
 });
+export const setProfileInformationActionCreator = (profileInformation) => ({
+    type: SET_PROFILE_INFORMATION,
+    profileInformation
+})
 
 export default profileReducer;
