@@ -13,24 +13,22 @@ const Users = (props) => {
         
     let users = props.users.map( user => 
         <User 
-            name={user.name} 
-            photo={user.photos.small}
-            status={user.status}
-            followed={user.followed}
-            id={user.id}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow} 
+            name={ user.name } 
+            photo={ user.photos.small }
+            status={ user.status }
+            followed={ user.followed }
+            id={ user.id }
+            follow={ props.follow }
+            unfollow={ props.unfollow } 
         />
-    )
-
-    console.log( props.users );
+    );
 
     return (
         <div>
             <button onClick={ props.getUsers }>Get Users</button>
             { users }
             <div>
-                { props.pages.map( page => <span 
+                { pages.map( page => <span 
                         className={ props.currentPage === page ? classes.selected : "" } 
                         onClick={() => props.setCurrentPage(page)}>{page}
                     </span>
