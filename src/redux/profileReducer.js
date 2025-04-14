@@ -3,26 +3,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_PROFILE_INFORMATION = 'SET_PROFILE_INFORMATION';
 
 const initialState = {
-    profileInformation: {
-        aboutMe: 'efvefv',
-        contacts: {
-            facebook: 'link',
-            website: 'link',
-            vk: 'link',
-            twitter: 'link',
-            instagram: 'link',
-            youtube: 'link',
-            github: 'link',
-            mainLink: 'link'
-        },
-        lookingForAJob: true,
-        lookingForAJobDescription: 'описание',
-        fullName: 'Ivanov Ivan',
-        photos: {
-            small: 'photo_small.jpg',
-            large: 'photo_large.jpg'
-        }
-    },
+    profileInformation: null,
     posts: [
         { id: 1, message: "My first post", likesCount: 12 },
         { id: 2, message: "My second post", likesCount: 21 },

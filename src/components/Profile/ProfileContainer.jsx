@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { setProfileInformationActionCreator } from '../../redux/profileReducer';
 
-class ProfileAPIContainer extends React.Component {
+class ProfileContainer extends React.Component {
     componentDidMount() {
         this.getUserInformation();
     }
@@ -17,32 +17,13 @@ class ProfileAPIContainer extends React.Component {
     }
 
     render() {
-        return (<Profile />)
+        return (<Profile profileInformation={ this.props.profileInformation } />)
     }
 }
 
 let mapStateToProps = (state) => {
-    let profileInformation = state.profilePage.profileInformation;
-    debugger;
     return {
-        aboutMe: profileInformation.aboutMe,
-        contacts: {
-            facebook: profileInformation.contacts.facebook,
-            website: profileInformation.contacts.website,
-            vk: profileInformation.contacts.vk,
-            twitter: profileInformation.contacts.twitter,
-            instagram: profileInformation.contacts.instagram,
-            youtube: profileInformation.contacts.youtube,
-            github: profileInformation.contacts.github,
-            mainLink: profileInformation.contacts.mainLink
-        },
-        lookingForAJob: profileInformation.lookingForAJob,
-        lookingForAJobDescription: profileInformation.lookingForAJobDescription,
-        fullName: profileInformation.fullName,
-        photos: {
-            small: profileInformation.photos.small,
-            large: profileInformation.photos.large
-        }
+        profileInformation: state.profilePage.profileInformation
     }
 }
 
@@ -54,6 +35,4 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileAPIContainer);
-
-export default ProfileContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
