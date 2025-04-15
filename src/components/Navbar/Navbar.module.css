@@ -1,15 +1,18 @@
 .left-navigation {
     grid-area: nav;
-    background-color: lightcoral;
+    background-color: transparent;
 }
 
 .items {
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 2em;
 }
 
 .item {
     text-decoration: none;
-    color: black;
 }
 
 .active {

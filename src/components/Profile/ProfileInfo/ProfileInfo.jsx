@@ -1,5 +1,6 @@
 import React from "react";
-import Preloader from '../../common/Preloader/Preloader'
+import Preloader from '../../common/Preloader/Preloader';
+import classes from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
     let information = props.profileInformation;
@@ -10,9 +11,13 @@ const ProfileInfo = (props) => {
     return (
         <div className="profile-info">
             <div>
-                <img src="https://avatars.mds.yandex.net/i?id=ba05c5a3615a58c6da2def145a54e120b717e062-6961938-images-thumbs&n=13" alt=""></img>
+                <img 
+                src="https://avatars.mds.yandex.net/i?id=ba05c5a3615a58c6da2def145a54e120b717e062-6961938-images-thumbs&n=13" 
+                alt="" 
+                className={classes.image}
+                ></img>
             </div>
-            <div>
+            <div className={classes.items}>
                 <p>Обо мне: { information.aboutMe ? information.aboutMe : '-' }</p>
                 <p>facebook: { information.contacts.facebook ? information.contacts.facebook : '-' }</p>
                 <p>website: { information.contacts.website ? information.contacts.website : '-' }</p>

@@ -1,4 +1,11 @@
-.App {
+.app {
+    background-color: var(--dark-gray);
+}
+
+.container {
+    max-width: 130em;
+    margin: auto;
+    
     display: grid;
     grid-template-areas: 
     "header header header"
@@ -9,5 +16,7 @@
 
 .main {
     grid-area: main;
-    background-color: lightblue;
+    background-color: var(--medium-gray);
+    margin-top: 2em;
+    margin-right: 3em;
 }
