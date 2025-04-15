@@ -7,8 +7,6 @@ import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        console.log( this.props );
-        debugger;
         this.getUserInformation();
     }
 
