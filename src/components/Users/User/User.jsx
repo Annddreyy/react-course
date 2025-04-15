@@ -2,6 +2,7 @@ import React from "react";
 import photo from '../../../assets/people.jpeg';
 import { NavLink } from 'react-router-dom';
 import classes from './User.module.css';
+import axios from 'axios';
 
 const User = (props) => {
     let follow = () => {
@@ -21,8 +22,41 @@ const User = (props) => {
                     </NavLink>
                 </div>
                 { props.followed 
-                    ? <button onClick={unfollow}>Отписаться</button> 
-                    : <button onClick={follow}>Подписаться</button> }
+                    ? <button onClick={() => {
+                        axios
+                        .delete(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                            { 
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': '71ee9618-84e0-4c45-b11e-f17709b94742'
+                                }
+                            }
+                        )
+                        .then((response) => {
+                            if (response.data.resultCode === 0) {
+                                unfollow();
+                            }
+                        });
+                    }}>Отписаться</button> 
+                    : <button onClick={() => {
+                        axios
+                        .post(
+                            `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                            {},
+                            { 
+                                withCredentials: true,
+                                headers: {
+                                    'API-KEY': '71ee9618-84e0-4c45-b11e-f17709b94742'
+                                }
+                            }
+                        )
+                        .then((response) => {
+                            if (response.data.resultCode === 0) {
+                                follow();
+                            }
+                        });
+                    }}>Подписаться</button> }
             </div>
             <div>
                 <div>

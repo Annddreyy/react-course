@@ -24,4 +24,6 @@
     flex-direction: column;
     gap: 1em;
     background-color: var(--dark-gray);
+    height: 30em;
+    overflow-y: auto;
 }
