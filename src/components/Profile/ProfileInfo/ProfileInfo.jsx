@@ -18,22 +18,28 @@ const ProfileInfo = (props) => {
                 ></img>
             </div>
             <div className={classes.items}>
-                <p>Обо мне: { information.aboutMe ? information.aboutMe : '-' }</p>
-                <p>facebook: { information.contacts.facebook ? information.contacts.facebook : '-' }</p>
-                <p>website: { information.contacts.website ? information.contacts.website : '-' }</p>
-                <p>vk: { information.contacts.vk ? information.contacts.vk : '-' }</p>
-                <p>twitter: { information.contacts.twitter ? information.contacts.twitter : '-' }</p>
-                <p>instagram: { information.contacts.instagram ? information.contacts.instagram : '-' }</p>
-                <p>youtube: { information.contacts.youtube ? information.contacts.youtube : '-' }</p>
-                <p>github: { information.contacts.github ? information.contacts.github : '-' }</p>
-                <p>mainLink: { information.contacts.mainLink ? information.contacts.mainLink : '-' }</p>
-                <p>looking for a job: { information.lookingForAJob ? 'да' : 'нет' }</p>
-                <p>looking for a job description: { information.lookingForAJobDescription ? information.lookingForAJobDescription : '-' }</p>
-                <p>fullName: { information.fullName }</p>
-                <p>photos:</p>
-                <div>
-                    <img src={ information.photos.small } alt="" />
+                <div className={classes['about-right']}>
                     <img src={ information.photos.large } alt="" />
+                    <p>{ information.fullName }</p>
+                </div>
+                <div className={classes['about-left']}>
+                    <p>Обо мне: { information.aboutMe ? information.aboutMe : '-' }</p>
+                    <div className={classes.social}>
+                        <h3>Социальные сети:</h3>
+                        <p>facebook: { information.contacts.facebook ? information.contacts.facebook : '-' }</p>
+                        <p>website: { information.contacts.website ? information.contacts.website : '-' }</p>
+                        <p>vk: { information.contacts.vk ? information.contacts.vk : '-' }</p>
+                        <p>twitter: { information.contacts.twitter ? information.contacts.twitter : '-' }</p>
+                        <p>instagram: { information.contacts.instagram ? information.contacts.instagram : '-' }</p>
+                        <p>youtube: { information.contacts.youtube ? information.contacts.youtube : '-' }</p>
+                        <p>github: { information.contacts.github ? information.contacts.github : '-' }</p>
+                        <p>mainLink: { information.contacts.mainLink ? information.contacts.mainLink : '-' }</p>
+                    </div>
+                    <div className={classes.status}>
+                        <h3>Статус:</h3>
+                        <p>В поисках работы: { information.lookingForAJob ? 'да' : 'нет' }</p>
+                        <p>Описание: { information.lookingForAJobDescription ? information.lookingForAJobDescription : '-' }</p>
+                    </div>
                 </div>
             </div>
         </div>

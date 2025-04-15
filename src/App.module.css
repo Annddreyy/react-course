@@ -5,12 +5,13 @@
 .container {
     max-width: 130em;
     margin: auto;
+    padding-bottom: 3em;
     
     display: grid;
     grid-template-areas: 
     "header header header"
     "nav main main";
-    grid-template-rows: 60px calc(100vh - 60px);
+    grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
 }
 
@@ -19,4 +20,5 @@
     background-color: var(--medium-gray);
     margin-top: 2em;
     margin-right: 3em;
+    min-height: calc(100vh - 60px - 3em);
 }

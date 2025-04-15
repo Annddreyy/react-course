@@ -1,5 +1,10 @@
 .item {
     display: flex;
+    align-items: center;
+    gap: 2em;
+    border: 1px solid var(--light-gray);
+    padding: 1em;
+    border-radius: 8px;
 }
 
 .item > img {

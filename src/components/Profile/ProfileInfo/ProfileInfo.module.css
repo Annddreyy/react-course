@@ -6,7 +6,24 @@
 
 .items {
     display: flex;
+    gap: 3em;
+    margin: 2em;
+}
+
+.about-right > img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.about-left, .about-right {
+    display: flex;
     flex-direction: column;
     gap: 1em;
-    margin: 2em;
+}
+
+.social, .status {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }

@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     color: var(--white);
+    box-sizing: border-box;
 }
 
 body {
@@ -20,6 +21,12 @@ code {
         monospace;
 }
 
+input, textarea {
+    background-color: var(--medium-gray);
+    padding: 1em;
+    border-radius: 12px;
+}
+
 @property --dark-gray {
     syntax: "<color>";
     inherits: true;
@@ -33,6 +40,7 @@ code {
 }
 
 :root {
+    --light-gray: #888888;
     --white: #ffffff;
     --dark-gray: #141414;
     --medium-gray: #222222;
