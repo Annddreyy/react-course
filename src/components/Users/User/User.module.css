@@ -1,5 +1,16 @@
 .user {
     display: flex;
+    gap: 3em;
+    border: 1px solid var(--light-gray);
+    padding: 1em 2em;
+    border-radius: 12px;
+}
+
+.left-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
 }
 
 .user img {

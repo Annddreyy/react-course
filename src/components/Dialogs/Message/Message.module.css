@@ -1,3 +1,18 @@
 .message {
+    position: relative;
+    background-color: var(--light-gray);
+    width: max-content;
+    color: black;
+    padding: 0.5em;
+    border-radius: 8px;
+}
 
+.message::before {
+    position: absolute;
+    content: "";
+    left: -12px;
+    bottom: 4px;
+    border: 8px solid transparent;
+    border-right-color: var(--light-gray);
+    transform: translate(-45deg);
 }

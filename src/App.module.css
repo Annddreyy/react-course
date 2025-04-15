@@ -21,4 +21,8 @@
     margin-top: 2em;
     margin-right: 3em;
     min-height: calc(100vh - 60px - 3em);
+
+    border-radius: 12px;
+
+    padding: 2em;
 }

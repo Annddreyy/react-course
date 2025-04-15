@@ -17,7 +17,9 @@ const Dialogs = (props) => {
     }
 
     const addMessage = () => {
-        props.addNewMessage();
+        if (props.messagesPage.newMessage) {
+            props.addNewMessage();
+        }
     }
 
     return (
@@ -26,7 +28,9 @@ const Dialogs = (props) => {
                 { dialogElements }
             </div>
             <div className={classes.messages}>
-                { messageElements }
+                <div className={classes.chat}>
+                    { messageElements }
+                </div>
                 <textarea ref={newMessageElement} onChange={ updateMessage } value={ state.newMessage } />
                 <input type="submit" value="Отправить" onClick={ addMessage } />
             </div>

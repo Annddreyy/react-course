@@ -14,24 +14,24 @@ const User = (props) => {
 
     return (
         <div className={classes.user}>
-            <div>
+            <div className={classes['left-part']}>
                 <div>
                     <NavLink to={"/profile/" + props.id}>
                         <img src={ props.photo ? props.photo : photo } alt="" />
                     </NavLink>
                 </div>
                 { props.followed 
-                    ? <button onClick={unfollow}>Unfollow</button> 
-                    : <button onClick={follow}>Follow</button> }
+                    ? <button onClick={unfollow}>Отписаться</button> 
+                    : <button onClick={follow}>Подписаться</button> }
             </div>
             <div>
                 <div>
-                    <p>{ props.name }</p>
-                    <p>{ props.status }</p>
+                    <p>Имя: { props.name }</p>
+                    <p>Статус: { props.status ? props.status : '-' }</p>
                 </div>
                 <div>
-                    <p>Penza</p>
-                    <p>Country</p>
+                    <p>Город: Пенза</p>
+                    <p>Страна: Россия</p>
                 </div>
             </div>
         </div>

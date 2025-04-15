@@ -24,17 +24,17 @@ const Users = (props) => {
     );
 
     return (
-        <div>
-            <button onClick={ props.getUsers }>Get Users</button>
+        <section className={classes.users}>
+            <h2>Пользователи</h2>
             { users }
-            <div>
+            <div className={classes.pagination}>
                 { pages.map( page => <span 
                         className={ props.currentPage === page ? classes.selected : "" } 
                         onClick={() => props.setCurrentPage(page)}>{page}
                     </span>
                 ) }
             </div>
-        </div>
+        </section>
     )
 };
 
