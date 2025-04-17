@@ -5,12 +5,16 @@ import classes from './User.module.css';
 import { usersAPI } from "../../../api/api";
 
 const User = (props) => {
+    debugger;
     let follow = () => {
         props.follow(props.id);
+        debugger;
+        props.toogleIsFollowingProgress(true);
     };
 
     let unfollow = () => {
         props.unfollow(props.id);
+        props.toogleIsFollowingProgress(false);
     }
 
     return (
@@ -22,7 +26,7 @@ const User = (props) => {
                     </NavLink>
                 </div>
                 { props.followed 
-                    ? <button onClick={() => {
+                    ? <button disabled={ props.followingInProgress } onClick={() => {
                         usersAPI.unfollowUser(props.id)
                         .then(response => {
                             if (response.resultCode === 0) {
@@ -30,7 +34,7 @@ const User = (props) => {
                             }
                         });
                     }}>Отписаться</button> 
-                    : <button onClick={() => {
+                    : <button disabled={ props.followingInProgress } onClick={() => {
                         usersAPI.followUser(props.id)
                         .then(response => {
                             if (response.resultCode === 0) {
