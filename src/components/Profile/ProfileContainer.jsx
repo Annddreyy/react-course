@@ -16,13 +16,19 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        return (<Profile profileInformation={ this.props.profileInformation } />)
+        return (
+            <Profile 
+                profileInformation={ this.props.profileInformation } 
+                isAuth={ this.props.isAuth }
+            />
+            )
     }
 }
 
 let mapStateToProps = (state) => {
     return {
-        profileInformation: state.profilePage.profileInformation
+        profileInformation: state.profilePage.profileInformation,
+        isAuth: state.auth.isAuth
     }
 }
 

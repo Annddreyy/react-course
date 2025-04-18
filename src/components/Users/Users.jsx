@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Users.module.css';
 import User from './User/User'
+import { Navigate } from 'react-router-dom';
 
 
 const Users = (props) => {
@@ -10,6 +11,10 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     };
+
+    if (!props.isAuth) {
+        return (<Navigate to="/login" />)
+    }
         
     let users = props.users.map( user => 
         <User 

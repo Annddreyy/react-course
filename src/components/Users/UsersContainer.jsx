@@ -47,6 +47,7 @@ class UsersAPIComponent extends React.Component {
 					toogleIsFollowingProgress={ this.props.toogleIsFollowingProgress }
 					followingThunkCreator={ this.props.followingThunkCreator }
 					unfollowingThunkCreator={ this.props.unfollowingThunkCreator }
+					isAuth={ this.props.isAuth }
 				/>
 			</>
 		);
@@ -60,7 +61,8 @@ const mapStateToProps = (state) => {
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,
 		isFetching: state.usersPage.isFetching,
-		followingInProgress: state.usersPage.followingInProgress
+		followingInProgress: state.usersPage.followingInProgress,
+		isAuth: state.auth.isAuth
 	};
 };
 
