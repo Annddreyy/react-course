@@ -1,9 +1,8 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setProfileInformationActionCreator } from '../../redux/profileReducer';
+import { setProfileThunkCreator } from '../../redux/profileReducer';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { profileAPI } from '../../api/api'
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -13,8 +12,7 @@ class ProfileContainer extends React.Component {
     getUserInformation() {
         let userId = this.props.params.userId;
         if (!userId) { userId = 2; }
-        profileAPI.getProfileInformation(userId)
-        .then(response => this.props.setProfileInformation(response));
+        this.props.setProfileThunkCreator(userId);
     }
 
     render() {
@@ -28,12 +26,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setProfileInformation: (profileInformation) => {
-            dispatch(setProfileInformationActionCreator(profileInformation))
-        }
-    }
+let mapDispatchToProps = {
+    setProfileThunkCreator
 }
 
 function withRouter(Component) {

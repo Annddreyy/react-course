@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_PROFILE_INFORMATION = 'SET_PROFILE_INFORMATION';
@@ -48,5 +50,10 @@ export const setProfileInformationActionCreator = (profileInformation) => ({
     type: SET_PROFILE_INFORMATION,
     profileInformation
 })
+
+export const setProfileThunkCreator = (userId) => (dispatch) =>  {
+    profileAPI.getProfileInformation(userId)
+    .then(response => dispatch(setProfileInformationActionCreator(response)));
+}
 
 export default profileReducer;
