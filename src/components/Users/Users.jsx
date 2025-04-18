@@ -4,7 +4,6 @@ import User from './User/User'
 
 
 const Users = (props) => {
-    debugger;
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
     let pages = [];
@@ -23,6 +22,8 @@ const Users = (props) => {
             unfollow={ props.unfollow } 
             toogleIsFollowingProgress={ props.toogleIsFollowingProgress }
             followingInProgress={ props.followingInProgress }
+            followingThunkCreator={ props.followingThunkCreator }
+            unfollowingThunkCreator={ props.unfollowingThunkCreator }
         />
     );
 

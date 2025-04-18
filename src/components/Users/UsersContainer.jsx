@@ -1,17 +1,18 @@
 import { connect } from "react-redux";
 import {
 	follow,
+	followingThunkCreator,
+	getUsersThunkCreator,
 	setCurrentPage,
-	setIsFetching,
 	setTotalUsersCount,
 	setUsers,
 	toogleIsFollowingProgress,
 	unfollow,
+	unfollowingThunkCreator,
 } from "../../redux/usersReducer";
 import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersAPIComponent extends React.Component {
 	componentDidMount() {
@@ -19,14 +20,7 @@ class UsersAPIComponent extends React.Component {
 	}
 
 	getUsers = () => {
-        this.props.setIsFetching(true);
-		usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-			.then((response) => {
-				debugger;
-                this.props.setUsers(response.items);
-				this.props.setTotalUsersCount(100);
-                this.props.setIsFetching(false);
-			});
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
 	};
 
 	setCurrentPage = (page) => {
@@ -51,6 +45,8 @@ class UsersAPIComponent extends React.Component {
 					isFetching={ this.props.isFetching }
 					followingInProgress={ this.props.followingInProgress }
 					toogleIsFollowingProgress={ this.props.toogleIsFollowingProgress }
+					followingThunkCreator={ this.props.followingThunkCreator }
+					unfollowingThunkCreator={ this.props.unfollowingThunkCreator }
 				/>
 			</>
 		);
@@ -58,7 +54,6 @@ class UsersAPIComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	debugger;
 	return {
 		users: state.usersPage.users,
 		pageSize: state.usersPage.pageSize,
@@ -75,8 +70,10 @@ const mapDispatchToProps =  {
 	setUsers,
 	setCurrentPage,
 	setTotalUsersCount,
-    setIsFetching,
-	toogleIsFollowingProgress
+	toogleIsFollowingProgress,
+	getUsersThunkCreator,
+	followingThunkCreator,
+	unfollowingThunkCreator
 }
 
 const UsersContainer = connect(
