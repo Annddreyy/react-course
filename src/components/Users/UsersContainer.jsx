@@ -13,6 +13,8 @@ import {
 import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersAPIComponent extends React.Component {
 	componentDidMount() {
@@ -78,9 +80,7 @@ const mapDispatchToProps =  {
 	unfollowingThunkCreator
 }
 
-const UsersContainer = connect(
-	mapStateToProps,
-	mapDispatchToProps
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps),
+	withAuthRedirect
 )(UsersAPIComponent);
-
-export default UsersContainer;
