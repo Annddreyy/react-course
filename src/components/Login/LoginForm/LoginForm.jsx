@@ -3,7 +3,6 @@ import classes from './LoginForm.module.css';
 import { Field, reduxForm } from 'redux-form'
 
 const LoginForm = (props) => {
-    debugger;
     return (
         <form className={ classes.form } onSubmit={ props.handleSubmit }>
             <label htmlFor="login">Логин:</label>

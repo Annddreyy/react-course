@@ -20,9 +20,6 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
     switch(action.type) {
         case FOLLOW:
-            debugger; 
-
-
             return {
                 ...state,
                 users: state.users.map( user => {
@@ -68,20 +65,17 @@ export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_
 export const setIsFetching = (isFetching) => ({ type: TOOGLE_IS_FETCHING, isFetching })
 export const toogleIsFollowingProgress = (followingInProgress) => ({ type: TOOGLE_IS_FOLLOWING_PROGRESS, followingInProgress });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(setIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize)
-        .then((response) => {
-            dispatch(setUsers(response.items));
-            dispatch(setTotalUsersCount(100));
-            dispatch(setIsFetching(false));
-        });
-    }
+export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+    dispatch(setIsFetching(true));
+    usersAPI.getUsers(currentPage, pageSize)
+    .then((response) => {
+        dispatch(setUsers(response.items));
+        dispatch(setTotalUsersCount(100));
+        dispatch(setIsFetching(false));
+    });
 };
 
 export const followingThunkCreator = (userId) => (dispatch) => {
-    debugger;
     usersAPI.followUser(userId)
     .then(response => {
     if (response.resultCode === 0) {

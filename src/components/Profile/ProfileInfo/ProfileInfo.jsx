@@ -5,6 +5,7 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     let information = props.profileInformation;
+    
     if (!information) {
         return (<Preloader />)
     }

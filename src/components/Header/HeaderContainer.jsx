@@ -5,17 +5,12 @@ import { connect } from "react-redux";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        debugger;
         this.props.authUserThunkCreator();
     }
 
     render() {
-        return (
-            <Header 
-                login={this.props.login}
-                isAuth={this.props.isAuth}
-            />
-    )}
+        return ( <Header login={this.props.login} isAuth={this.props.isAuth} /> )
+    }
 }
 
 const mapStateToProps = (state) => {

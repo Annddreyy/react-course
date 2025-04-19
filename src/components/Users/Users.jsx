@@ -10,21 +10,7 @@ const Users = (props) => {
         pages.push(i);
     };
         
-    let users = props.users.map( user => 
-        <User 
-            name={ user.name } 
-            photo={ user.photos.small }
-            status={ user.status }
-            followed={ user.followed }
-            id={ user.id }
-            follow={ props.follow }
-            unfollow={ props.unfollow } 
-            toogleIsFollowingProgress={ props.toogleIsFollowingProgress }
-            followingInProgress={ props.followingInProgress }
-            followingThunkCreator={ props.followingThunkCreator }
-            unfollowingThunkCreator={ props.unfollowingThunkCreator }
-        />
-    );
+    let users = props.users.map( user => <User {...props} {...user} photo={ user.photos.small } /> );
 
     return (
         <section className={classes.users}>

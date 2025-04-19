@@ -14,13 +14,13 @@ const Dialogs = (props) => {
     const updateMessage = () => {
         const text = newMessageElement.current.value;
         props.updateMessage(text)
-    }
+    };
 
     const addMessage = () => {
         if (props.messagesPage.newMessage) {
             props.addNewMessage();
         }
-    }
+    };
 
     return (
         <div className={classes.dialogs}>

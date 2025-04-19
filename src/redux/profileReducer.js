@@ -49,23 +49,9 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
-
-export const updatePostActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    postText: text
-});
-
-export const setProfileInformationActionCreator = (profileInformation) => ({
-    type: SET_PROFILE_INFORMATION,
-    profileInformation
-});
-
-export const setStatusActionCreator = (status) => ({
-    type: SET_STATUS,
-    status
-});
-
-
+export const updatePostActionCreator = (postText) => ({ type: UPDATE_NEW_POST_TEXT, postText });
+export const setProfileInformationActionCreator = (profileInformation) => ({ type: SET_PROFILE_INFORMATION, profileInformation });
+export const setStatusActionCreator = (status) => ({ type: SET_STATUS, status });
 
 export const setProfileThunkCreator = (userId) => (dispatch) =>  {
     profileAPI.getProfileInformation(userId)
