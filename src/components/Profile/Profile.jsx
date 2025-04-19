@@ -6,7 +6,11 @@ import classes from './Profile.module.css'
 const Profile = (props) => {
     return (
         <section className={classes.profile}>
-            <ProfileInfo profileInformation={ props.profileInformation } />
+            <ProfileInfo 
+                profileInformation={ props.profileInformation } 
+                status={ props.status }
+                updateStatus={ props.updateStatus }
+            />
             <MyPostsContainer />
         </section>
     )

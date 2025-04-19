@@ -41,7 +41,7 @@ const ProfileInfo = (props) => {
                         <p>В поисках работы: { information.lookingForAJob ? 'да' : 'нет' }</p>
                         <p>Описание: { information.lookingForAJobDescription ? information.lookingForAJobDescription : '-' }</p>
                     </div>
-                    <ProfileStatus status="1" />
+                    <ProfileStatus status={ props.status } updateStatus={ props.updateStatus } />
                 </div>
             </div>
         </div>
