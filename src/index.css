@@ -27,7 +27,7 @@ input, textarea, button {
     border-radius: 12px;
 }
 
-input[type="submit"], button {
+input, button {
     border: 1px solid var(--light-gray);
     width: max-content;
 }
