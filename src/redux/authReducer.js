@@ -24,19 +24,30 @@ const authReducer = (state = initialState, action) => {
 
 export const setUserDataActionCreator = (userId, email, login) => ({
     type: SET_USER_DATA,
-    data: {
-        userId,
-        email,
-        login
-    }
+    data: { userId, email, login }
 });
 
-export const authUserThunkCreator = () => (dispatch) => {
+function authUser(dispatch) {
     authAPI.authUser()
     .then(response => {
         if (response.resultCode === 0) {
             let { id, email, login } = response.data;
             dispatch(setUserDataActionCreator(id, email, login));
+        }
+    });
+}
+
+export const authUserThunkCreator = () => (dispatch) => {
+    authUser(dispatch);
+};
+
+export const loginUserThunkCreator = (email, password, remember) => (dispatch) => {
+    authAPI.loginUser(email, password, remember || false)
+    .then(response => {
+        if (response.resultCode === 0) {
+            authUser(dispatch);
+        } else {
+            alert('Неверный логин или пароль!');
         }
     });
 };

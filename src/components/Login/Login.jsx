@@ -2,14 +2,16 @@ import React from 'react';
 import ReduxLoginForm from './LoginForm/LoginForm';
 import classes from './Login.module.css';
 
-const Login = () => {
+const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log('Данные формы:', formData);
+        let { email, password, remember } = formData;
+        remember ||= false;
+        props.loginUserThunkCreator(email, password, remember);
     };
     
     return (
         <div>
-            <h1 className={ classes.title }>Логин</h1>
+            <h1 className={ classes.title }>Авторизация</h1>
             <ReduxLoginForm onSubmit={onSubmit} />
         </div>
     )
