@@ -5,23 +5,6 @@
     margin: 2em;
 }
 
-.new-post-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-}
-
-.new-post-form > textarea {
-    min-height: 3em;
-    height: 200px;
-    resize: vertical;
-}
-
-.new-post-form > input[type="submit"] {
-    border: 1px solid var(--light-gray);
-    width: max-content;
-}
-
 .posts {
     display: flex;
     flex-direction: column;
