@@ -9,7 +9,7 @@ const Dialogs = (props) => {
     let messageElements = props.messagesPage.messages.map(elem => <Message message={elem.message} id={elem.id} />)
 
     const onSubmit = (formData) => {
-        console.log('Данные формы:', formData);
+        props.addNewMessage(formData['new-message']);
     };
 
     return (
@@ -21,12 +21,7 @@ const Dialogs = (props) => {
                 <div className={classes.chat}>
                     { messageElements }
                 </div>
-                <NewMessageForm 
-                    messagesPage={ props.messagesPage }
-                    updateMessage={ props.updateMessage }
-                    addNewMessage={ props.addNewMessage }
-                    onSubmit={ onSubmit }
-                />
+                <NewMessageForm onSubmit={ onSubmit } message={ props.messagesPage.newMessage } />
             </div>
         </div>
     )
