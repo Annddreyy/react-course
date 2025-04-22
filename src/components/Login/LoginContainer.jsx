@@ -13,4 +13,10 @@ const mapDispatchToProps = {
   loginUserThunkCreator
 };
 
-export default connect(null, mapDispatchToProps)(LoginContainer);
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

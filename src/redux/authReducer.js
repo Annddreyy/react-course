@@ -14,42 +14,46 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload
             }
         default:
             return state;
     }
 }
 
-export const setUserDataActionCreator = (userId, email, login) => ({
+export const setUserDataActionCreator = (userId, email, login, isAuth) => ({
     type: SET_USER_DATA,
-    data: { userId, email, login }
+    payload: { userId, email, login, isAuth }
 });
 
-function authUser(dispatch) {
+export const authUserThunkCreator = () => (dispatch) => {
     authAPI.authUser()
     .then(response => {
         if (response.resultCode === 0) {
             let { id, email, login } = response.data;
-            dispatch(setUserDataActionCreator(id, email, login));
+            dispatch(setUserDataActionCreator(id, email, login, true));
         }
     });
 }
-
-export const authUserThunkCreator = () => (dispatch) => {
-    authUser(dispatch);
-};
 
 export const loginUserThunkCreator = (email, password, remember) => (dispatch) => {
     authAPI.loginUser(email, password, remember || false)
     .then(response => {
         if (response.resultCode === 0) {
-            authUser(dispatch);
-        } else {
-            alert('Неверный логин или пароль!');
+            dispatch(authUserThunkCreator());
         }
     });
 };
+
+export const logoutUserThunkCreator = () => (dispatch) => {
+    console.log( 2 );
+    authAPI.logoutUser()
+    .then(response => {
+        if (response.resultCode === 0) {
+            console.log( 2 );
+            dispatch(setUserDataActionCreator(null, null, null, false));
+        }
+    })
+}
 
 export default authReducer;
