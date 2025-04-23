@@ -67,6 +67,7 @@ export const toogleIsFollowingProgress = (followingInProgress) => ({ type: TOOGL
 
 export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
     dispatch(setIsFetching(true));
+    dispatch(setCurrentPage(currentPage));
     usersAPI.getUsers(currentPage, pageSize)
     .then((response) => {
         dispatch(setUsers(response.items));

@@ -17,7 +17,8 @@ const Users = (props) => {
             <h2>Пользователи</h2>
             { users }
             <div className={classes.pagination}>
-                { pages.map( page => <span 
+                { pages.map( page => 
+                    <span 
                         className={ props.currentPage === page ? classes.selected : "" } 
                         onClick={() => props.setCurrentPage(page)}>{page}
                     </span>
