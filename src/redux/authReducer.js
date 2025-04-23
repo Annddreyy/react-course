@@ -28,7 +28,7 @@ export const setUserDataActionCreator = (userId, email, login, isAuth) => ({
 });
 
 export const authUserThunkCreator = () => (dispatch) => {
-    authAPI.authUser()
+    return authAPI.authUser()
     .then(response => {
         if (response.resultCode === 0) {
             let { id, email, login } = response.data;
@@ -50,11 +50,9 @@ export const loginUserThunkCreator = (email, password, remember) => (dispatch) =
 };
 
 export const logoutUserThunkCreator = () => (dispatch) => {
-    console.log( 2 );
     authAPI.logoutUser()
     .then(response => {
         if (response.resultCode === 0) {
-            console.log( 2 );
             dispatch(setUserDataActionCreator(null, null, null, false));
         }
     })
