@@ -3,6 +3,7 @@ import classes from './LoginForm.module.css';
 import { Field, reduxForm } from 'redux-form'
 import { Input } from '../../common/FormsControls/FormsControls';
 import { requiredField } from '../../../utils/validators/validators';
+import styles from '../../common/FormsControls/FormsControls.module.css'
 
 const LoginForm = (props) => {
     return (
@@ -34,6 +35,9 @@ const LoginForm = (props) => {
                 Запомнить меня
             </div>
             <button>Отправить</button>
+            <div className={styles.formSummaryError}>
+                { props.error }
+            </div>
         </form>
     )
 };

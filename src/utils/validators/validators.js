@@ -3,7 +3,6 @@ export const requiredField = value => {
     if (value) {
         return undefined;
     }
-    console.log( 1 );
     return 'Field is required';
 };
 
