@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Users.module.css';
 import User from './User/User';
+import Paginator from '../common/Paginator/Paginator';
+
 
 const Users = ({ 
     totalUsersCount, pageSize, currentPage, setCurrentPage,
@@ -18,20 +20,14 @@ const Users = ({
         photo={ user.photos.small } 
         followingThunkCreator={ followingThunkCreator }
         unfollowingThunkCreator={ unfollowingThunkCreator }
+        key={ user.id }
     /> );
 
     return (
         <section className={classes.users}>
             <h2>Пользователи</h2>
             { usersElements }
-            <div className={classes.pagination}>
-                { pages.map( page => 
-                    <span 
-                        className={ currentPage === page ? classes.selected : "" } 
-                        onClick={() => setCurrentPage(page)}>{page}
-                    </span>
-                ) }
-            </div>
+            <Paginator pages={ pages } currentPage={ currentPage } setCurrentPage={ setCurrentPage } />
         </section>
     )
 };

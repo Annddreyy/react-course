@@ -4,13 +4,3 @@
     gap: 2em;
     margin: 2em 3em;
 }
-
-.selected {
-    font-weight: bolder;
-}
-
-.pagination {
-    display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
-}

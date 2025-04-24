@@ -6,8 +6,8 @@ import NewMessageForm from "./NewMessageForm/NewMessageForm";
 
 const Dialogs = ({ dialogs, messages, newMessage, addNewMessage }) => {
     debugger;
-    let dialogElements = dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} />);
-    let messageElements = messages.map(elem => <Message message={elem.message} id={elem.id} />)
+    let dialogElements = dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} key={elem.id} />);
+    let messageElements = messages.map(elem => <Message message={elem.message} id={elem.id} key={elem.id} />)
 
     const onSubmit = (formData) => {
         addNewMessage(formData['new-message']);
