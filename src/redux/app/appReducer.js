@@ -1,4 +1,4 @@
-import { authUserThunkCreator } from "./authReducer";
+import { authUserThunkCreator } from './../auth/authThunks';
 
 const SET_INITIALIZED = 'SET_INITIALIZED';
 

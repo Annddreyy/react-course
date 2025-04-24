@@ -1,5 +1,6 @@
 import { authAPI } from "../../api/api";
-import { stopSubmit, setUserDataActionCreator } from "redux-form";
+import { stopSubmit } from "redux-form";
+import { setUserDataActionCreator } from "./authReducer";
 
 export const authUserThunkCreator = () => (dispatch) => {
     return authAPI.authUser()
@@ -30,4 +31,4 @@ export const logoutUserThunkCreator = () => (dispatch) => {
             dispatch(setUserDataActionCreator(null, null, null, false));
         }
     })
-};
+}

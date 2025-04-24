@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from "../../redux/usersReducer";
+import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from "../../redux/users/usersThunks";
 import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
-import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/userSelectors";
+import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users/userSelectors";
 
 class UsersContainer extends React.Component {
 	getUsers = (currentPage, pageSize) => {

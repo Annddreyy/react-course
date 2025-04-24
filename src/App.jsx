@@ -10,7 +10,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from './hoc/withRouter';
-import { initializeApp } from './redux/appReducer';
+import { initializeApp } from './redux/app/appReducer';
 import Preloader from './components/common/Preloader/Preloader';
 
 class App extends React.Component {
