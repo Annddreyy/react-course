@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers, legacy_createStore as createStore } from 'redux';
-import profileReducer from './profileReducer';
-import messagesReducer from './messagesReducer';
+import profileReducer from './profile/profileReducer';
+import messagesReducer from './messages/messagesReducer';
 import usersReducer from './usersReducer';
-import authReducer from './authReducer';
+import authReducer from './auth/authReducer';
 import { thunk as thunkMiddleware } from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import appReducer from './appReducer';

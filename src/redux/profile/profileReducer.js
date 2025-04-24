@@ -1,5 +1,3 @@
-import { profileAPI } from "../api/api";
-
 const ADD_POST = 'ADD-POST';
 const SET_PROFILE_INFORMATION = 'SET_PROFILE_INFORMATION';
 const SET_STATUS = 'SET_STATUS';
@@ -43,24 +41,5 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (text) => ({ type: ADD_POST, text });
 export const setProfileInformationActionCreator = (profileInformation) => ({ type: SET_PROFILE_INFORMATION, profileInformation });
 export const setStatusActionCreator = (status) => ({ type: SET_STATUS, status });
-
-export const setProfileThunkCreator = (userId) => (dispatch) =>  {
-    profileAPI.getProfileInformation(userId)
-    .then(response => dispatch(setProfileInformationActionCreator(response)));
-};
-
-export const getStatusThunkCreator = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId)
-    .then(response => dispatch(setStatusActionCreator(response)));
-};
-
-export const updateStatusThunkCreator = (status) => (dispatch) => {
-    profileAPI.setStatus(status)
-    .then(response => {
-        if (response.resultCode === 0) {
-            dispatch(setStatusActionCreator(status));
-        }
-    });
-};
 
 export default profileReducer;
