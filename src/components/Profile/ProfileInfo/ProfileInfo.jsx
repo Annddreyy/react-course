@@ -3,9 +3,7 @@ import Preloader from '../../common/Preloader/Preloader';
 import classes from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-    let information = props.profileInformation;
-    
+const ProfileInfo = ({ profileInformation: information, status, updateStatus }) => {
     if (!information) {
         return (<Preloader />)
     }
@@ -42,7 +40,7 @@ const ProfileInfo = (props) => {
                         <p>В поисках работы: { information.lookingForAJob ? 'да' : 'нет' }</p>
                         <p>Описание: { information.lookingForAJobDescription ? information.lookingForAJobDescription : '-' }</p>
                     </div>
-                    <ProfileStatusWithHooks status={ props.status } updateStatus={ props.updateStatus } />
+                    <ProfileStatusWithHooks status={ status } updateStatus={ updateStatus } />
                 </div>
             </div>
         </div>

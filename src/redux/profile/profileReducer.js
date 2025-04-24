@@ -1,6 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const SET_PROFILE_INFORMATION = 'SET_PROFILE_INFORMATION';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'social-network/profile/ADD-POST';
+const SET_PROFILE_INFORMATION = 'social-network/profile/SET_PROFILE_INFORMATION';
+const SET_STATUS = 'social-network/profile/SET_STATUS';
 
 const initialState = {
     profileInformation: null,

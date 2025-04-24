@@ -1,14 +1,14 @@
 import React from "react";
 import classes from './Post.module.css'
 
-const Post = (props) => {
+const Post = ({ img, message, likesCount }) => {
     return (
         <article className={classes.item}>
             <div className="top">
-                <img src={props.img} alt="" />
-                <p>{props.message}</p>
+                <img src={img} alt="" />
+                <p>{message}</p>
             </div>
-            <span>Likes {props.likesCount}</span>
+            <span>Likes {likesCount}</span>
         </article>
     )
 }

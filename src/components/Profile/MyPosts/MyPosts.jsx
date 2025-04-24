@@ -4,11 +4,7 @@ import Post from "./Post/Post";
 import ReduxNewPostForm from "./NewPost/NewPostForm";
 
 class MyPosts extends React.Component {
-    componentDidUpdate() {
-        console.log( 2 );
-    }
     render() {
-        console.log( 1 );
         let postElements = this.props.posts.map(elem => <Post message={elem.message} likesCount={elem.likesCount} id={elem.id} />);
         
         const onSubmit = (formData) => {

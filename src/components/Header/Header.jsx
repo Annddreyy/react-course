@@ -2,17 +2,17 @@ import React from "react";
 import classes from './Header.module.css';
 import { NavLink } from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({ isAuth, logoutUserThunkCreator, login }) => {
     debugger;
     return (
         <header className={classes.header}>
 			<img src="https://jnsenfeng.ru/images/vk.png" alt=""></img>
             <div>
                 { 
-                props.isAuth 
+                isAuth 
                 ? 
                 <div>
-                    { props.login } <button onClick={ props.logoutUserThunkCreator }>Выйти</button>
+                    { login } <button onClick={ logoutUserThunkCreator }>Выйти</button>
                 </div>
                 : 
                 <NavLink to="/login">Login</NavLink> 

@@ -5,9 +5,9 @@ import { Input } from '../../common/FormsControls/FormsControls';
 import { requiredField } from '../../../utils/validators/validators';
 import styles from '../../common/FormsControls/FormsControls.module.css'
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
     return (
-        <form className={ classes.form } onSubmit={ props.handleSubmit }>
+        <form className={ classes.form } onSubmit={ handleSubmit }>
             <label htmlFor="email">Логин:</label>
             <Field 
                 type='email' 
@@ -36,7 +36,7 @@ const LoginForm = (props) => {
             </div>
             <button>Отправить</button>
             <div className={styles.formSummaryError}>
-                { props.error }
+                { error }
             </div>
         </form>
     )

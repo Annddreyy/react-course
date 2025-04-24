@@ -4,12 +4,13 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import NewMessageForm from "./NewMessageForm/NewMessageForm";
 
-const Dialogs = (props) => {
-    let dialogElements = props.messagesPage.dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} />);
-    let messageElements = props.messagesPage.messages.map(elem => <Message message={elem.message} id={elem.id} />)
+const Dialogs = ({ dialogs, messages, newMessage, addNewMessage }) => {
+    debugger;
+    let dialogElements = dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} />);
+    let messageElements = messages.map(elem => <Message message={elem.message} id={elem.id} />)
 
     const onSubmit = (formData) => {
-        props.addNewMessage(formData['new-message']);
+        addNewMessage(formData['new-message']);
     };
 
     return (
@@ -21,7 +22,7 @@ const Dialogs = (props) => {
                 <div className={classes.chat}>
                     { messageElements }
                 </div>
-                <NewMessageForm onSubmit={ onSubmit } message={ props.messagesPage.newMessage } />
+                <NewMessageForm onSubmit={ onSubmit } message={ newMessage } />
             </div>
         </div>
     )

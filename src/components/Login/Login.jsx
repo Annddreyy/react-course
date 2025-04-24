@@ -3,14 +3,14 @@ import ReduxLoginForm from './LoginForm/LoginForm';
 import classes from './Login.module.css';
 import { Navigate } from 'react-router-dom';
 
-const Login = (props) => {
+const Login = ({ loginUserThunkCreator, isAuth }) => {
     const onSubmit = (formData) => {
         let { email, password, remember } = formData;
         remember ||= false;
-        props.loginUserThunkCreator(email, password, remember);
+        loginUserThunkCreator(email, password, remember);
     };
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate to={'/profile'} />
     }
     

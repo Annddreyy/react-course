@@ -6,13 +6,13 @@ import { maxLenghtCreator, requiredField } from '../../../utils/validators/valid
 
 const maxLenght1000 = maxLenghtCreator(1000);
 
-const NewMessageForm = (props) => {
+const NewMessageForm = ({ handleSubmit, message }) => {
     return (
-        <form onSubmit={ props.handleSubmit } className={ classes.form } >
+        <form onSubmit={ handleSubmit } className={ classes.form } >
             <Field 
                 component={ Textarea } 
                 name='new-message' 
-                value={ props.message } 
+                value={ message } 
                 validate={[requiredField, maxLenght1000]}
             />
             <button>Отправить</button>

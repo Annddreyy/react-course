@@ -1,6 +1,6 @@
 import { authUserThunkCreator } from './../auth/authThunks';
 
-const SET_INITIALIZED = 'SET_INITIALIZED';
+const SET_INITIALIZED = 'social-network/app/SET_INITIALIZED';
 
 let initialState = {
     initialized: false

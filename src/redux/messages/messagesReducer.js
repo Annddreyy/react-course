@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD-NEW-MESSAGE';
+const ADD_MESSAGE = 'social-network/messages/ADD-NEW-MESSAGE';
 
 const initialState = {
     messages:  [

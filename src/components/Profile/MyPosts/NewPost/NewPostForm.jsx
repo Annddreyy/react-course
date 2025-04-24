@@ -6,13 +6,13 @@ import { Textarea } from '../../../common/FormsControls/FormsControls';
 
 const maxLenght10 = maxLenghtCreator(10);
 
-const NewPostForm = (props) => {
+const NewPostForm = ({ handleSubmit, postText }) => {
     return (
-        <form className={classes['new-post-form']} onSubmit={ props.handleSubmit }>
+        <form className={classes['new-post-form']} onSubmit={ handleSubmit }>
             <Field component={ Textarea }
                 name="new_post" 
                 id="new_post" 
-                value={ props.postText } 
+                value={ postText } 
                 className={ classes.input }
                 validate={[requiredField, maxLenght10 ]}
             />
