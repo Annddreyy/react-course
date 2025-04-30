@@ -1,9 +1,0 @@
-.selected {
-    font-weight: bolder;
-}
-
-.pagination {
-    display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
-}
