@@ -15,6 +15,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
   return {
+    captcha: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
   }
 }

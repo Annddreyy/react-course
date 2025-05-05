@@ -3,11 +3,10 @@ import ReduxLoginForm from './LoginForm/LoginForm';
 import classes from './Login.module.css';
 import { Navigate } from 'react-router-dom';
 
-const Login = ({ loginUserThunkCreator, isAuth }) => {
-    const onSubmit = (formData) => {
-        let { email, password, remember } = formData;
+const Login = ({ loginUserThunkCreator, isAuth, captcha }) => {
+    const onSubmit = ({ email, password, remember, captcha }) => {
         remember ||= false;
-        loginUserThunkCreator(email, password, remember);
+        loginUserThunkCreator(email, password, remember, captcha);
     };
 
     if (isAuth) {
@@ -17,7 +16,7 @@ const Login = ({ loginUserThunkCreator, isAuth }) => {
     return (
         <div>
             <h1 className={ classes.title }>Авторизация</h1>
-            <ReduxLoginForm onSubmit={onSubmit} />
+            <ReduxLoginForm onSubmit={onSubmit} captcha={ captcha }  />
         </div>
     )
 }

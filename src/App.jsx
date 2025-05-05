@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './App.module.css';
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -15,8 +15,17 @@ import Preloader from './components/common/Preloader/Preloader';
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 
 class App extends React.Component {
+	catchAllUnhandledErrors = (promiseRejectionEvent) => {
+		this.alert('error');
+		console.log( promiseRejectionEvent );
+	}
 	componentDidMount() {
 		this.props.initializeApp();
+		window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
 	}
 
 	render() {
@@ -44,6 +53,7 @@ class App extends React.Component {
 							<Route path="/login" element={
 								<LoginContainer />
 							} />
+							<Route path='*' element={<Navigate to='/' />} />
 						</Routes>
 					</main>
 				</div>

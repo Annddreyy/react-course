@@ -5,7 +5,8 @@ import { Input } from '../../common/FormsControls/FormsControls';
 import { requiredField } from '../../../utils/validators/validators';
 import styles from '../../common/FormsControls/FormsControls.module.css'
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captcha }) => {
+    console.log( captcha );
     return (
         <form className={ classes.form } onSubmit={ handleSubmit }>
             <label htmlFor="email">Логин:</label>
@@ -34,6 +35,18 @@ const LoginForm = ({ handleSubmit, error }) => {
                 />
                 Запомнить меня
             </div>
+            { captcha && 
+            <div>
+                <img src={ captcha } />
+                <Field 
+                    type='text' 
+                    name="captcha" 
+                    id="captcha" 
+                    component={ Input }
+                    validate={ [requiredField] }
+                />
+            </div> 
+             }
             <button>Отправить</button>
             <div className={styles.formSummaryError}>
                 { error }
