@@ -1,29 +1,36 @@
-import { authUserThunkCreator } from './../auth/authThunks';
+import { authUserThunkCreator } from '../auth/authThunks';
 
 const SET_INITIALIZED = 'social-network/app/SET_INITIALIZED';
 
-let initialState = {
+export type InitialStateType = {
+    initialized: boolean
+}
+
+let initialState: InitialStateType = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
         case SET_INITIALIZED:
-            debugger;
             return {
                 ...state,
-                initialized: true
+                initialized: true,
             }
         default:
             return state;
     }
 }
 
+type InitializedActionType = {
+    type: typeof SET_INITIALIZED
+}
 
-export const setInitializedActionCreator = () => ({type: SET_INITIALIZED});
+export const setInitializedActionCreator = (): InitializedActionType => ({ type: SET_INITIALIZED });
 
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(authUserThunkCreator());
+
     Promise.all([promise])
     .then(
         () => dispatch(setInitializedActionCreator())

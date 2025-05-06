@@ -8,7 +8,7 @@ const Users = ({
     totalItemsCount, pageSize, currentPage, setCurrentPage, portionSize = 10,
     users, followingThunkCreator, unfollowingThunkCreator 
 }) => {
-    
+    debugger;
     let usersElements = users.map( user => <User 
         {...user} 
         photo={ user.photos.small } 

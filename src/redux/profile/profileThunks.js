@@ -1,5 +1,5 @@
 import { profileAPI } from "../../api/api";
-import { setProfileInformationActionCreator, setStatusActionCreator } from "./profileReducer";
+import { setProfileInformationActionCreator, setStatusActionCreator } from "./profileReducer.ts";
 
 export const setProfileThunkCreator = (userId) => async(dispatch) =>  {
     let response = await profileAPI.getProfileInformation(userId)

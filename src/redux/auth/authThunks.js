@@ -1,6 +1,6 @@
-import { authAPI, securityAPI } from "../../api/api";
+import { authAPI, securityAPI } from "../../api/api.js";
 import { stopSubmit } from "redux-form";
-import { setCaptchaUrl, setUserDataActionCreator } from "./authReducer";
+import { setCaptchaUrl, setUserDataActionCreator } from "./authReducer.ts";
 
 export const authUserThunkCreator = () => async(dispatch) => {
     let response = await authAPI.authUser();

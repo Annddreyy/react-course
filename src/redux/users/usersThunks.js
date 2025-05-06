@@ -1,11 +1,12 @@
 import { usersAPI } from "../../api/api";
-import { setIsFetching, setCurrentPage, setUsers, setTotalUsersCount, unfollow, follow, toogleIsFollowingProgress } from "./usersReducer";
+import { setIsFetching, setCurrentPage, setUsers, setTotalUsersCount, unfollow, follow, toogleIsFollowingProgress } from "./usersReducer.ts";
 
 export const getUsersThunkCreator = (currentPage, pageSize) => async(dispatch) => {
     dispatch(setIsFetching(true));
     dispatch(setCurrentPage(currentPage));
     
     let response = await usersAPI.getUsers(currentPage, pageSize);
+    debugger;
     dispatch(setUsers(response.items));
     dispatch(setTotalUsersCount(response.totalCount));
     dispatch(setIsFetching(false));
