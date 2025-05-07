@@ -20,7 +20,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-const usersReducer = (state = initialState, action: any): InitialStateType => {
+const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
     switch(action.type) {
         case FOLLOW:
             return {
@@ -44,19 +44,23 @@ const usersReducer = (state = initialState, action: any): InitialStateType => {
             return { ...state, totalUsersCount: action.totalUsersCount } 
         case TOOGLE_IS_FETCHING:
             return { ...state, isFetching: action.isFetching }
+        case TOOGLE_IS_FOLLOWING_PROGRESS:
+            return { ...state, followingInProgress: action.followingInProgress }
         default:
             return state;
     }
 };
 
-type FollowType = {
+export type ActionTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCount | SetIsFetchingType | ToogleIsFollowingProgressType;
+
+export type FollowType = {
     type: typeof FOLLOW,
     userId: number
 };
 
 export const follow = (userId: number): FollowType => ({ type: FOLLOW, userId });
 
-type UnfollowType = {
+export type UnfollowType = {
     type: typeof UNFOLLOW,
     userId: number
 };
@@ -84,18 +88,18 @@ type SetTotalUsersCount = {
 
 export const setTotalUsersCount = (totalUsersCount: number): SetTotalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 
-type SetIsFetching = {
+type SetIsFetchingType = {
     type: typeof TOOGLE_IS_FETCHING;
     isFetching: boolean
 };
 
-export const setIsFetching = (isFetching: boolean): SetIsFetching => ({ type: TOOGLE_IS_FETCHING, isFetching });
+export const setIsFetching = (isFetching: boolean): SetIsFetchingType => ({ type: TOOGLE_IS_FETCHING, isFetching });
 
-type ToogleIsFollowingProgress = {
+type ToogleIsFollowingProgressType = {
     type: typeof TOOGLE_IS_FOLLOWING_PROGRESS,
     followingInProgress: boolean
 };
 
-export const toogleIsFollowingProgress = (followingInProgress: boolean): ToogleIsFollowingProgress => ({ type: TOOGLE_IS_FOLLOWING_PROGRESS, followingInProgress });
+export const toogleIsFollowingProgress = (followingInProgress: boolean): ToogleIsFollowingProgressType => ({ type: TOOGLE_IS_FOLLOWING_PROGRESS, followingInProgress });
 
 export default usersReducer;
