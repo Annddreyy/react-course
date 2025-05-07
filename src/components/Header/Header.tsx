@@ -2,8 +2,13 @@ import React from "react";
 import classes from './Header.module.css';
 import { NavLink } from "react-router-dom";
 
-const Header = ({ isAuth, logoutUserThunkCreator, login }) => {
-    debugger;
+type PropsType = {
+    isAuth: boolean,
+    login: string | null,
+    logoutUserThunkCreator: () => void,
+};
+
+const Header = ({ isAuth, logoutUserThunkCreator, login }: PropsType) => {
     return (
         <header className={classes.header}>
 			<img src="https://jnsenfeng.ru/images/vk.png" alt=""></img>

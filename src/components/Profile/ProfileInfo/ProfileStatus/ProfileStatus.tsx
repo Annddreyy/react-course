@@ -17,29 +17,21 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
     };
 
     activateEditMode = () => {
-        this.setState( {
-            editMode: true
-        } )
+        this.setState({ editMode: true })
     };
 
     deactivateEditMode = () => {
         this.props.updateStatus(this.state.status);
-        this.setState( {
-            editMode: false
-        } )
+        this.setState({ editMode: false })
     };
 
     onStatusChange = (event: ChangeEvent<HTMLInputElement>) => {
-        this.setState( {
-            status: event.target.value
-        } )
+        this.setState({ status: event.target.value })
     };
 
     componentDidUpdate(prevProps: PropsType, prevState: StateType) {
         if (this.state.status !== this.props.status) {
-            this.setState( {
-                status: this.props.status
-            });
+            this.setState({ status: this.props.status });
         };
     }
 
