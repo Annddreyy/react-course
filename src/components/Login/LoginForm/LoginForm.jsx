@@ -37,7 +37,7 @@ const LoginForm = ({ handleSubmit, error, captcha }) => {
             </div>
             { captcha && 
             <div>
-                <img src={ captcha } />
+                <img src={ captcha } alt="" />
                 <Field 
                     type='text' 
                     name="captcha" 

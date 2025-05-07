@@ -1,3 +1,4 @@
+import { UserType } from "../../types/types";
 import { updateObjectInArray } from "../../utils/object-helpers";
 
 const FOLLOW = 'social-network/users/FOLLOW';
@@ -7,19 +8,6 @@ const SET_CURRENT_PAGE = "social-network/users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = 'social-network/users/SET_TOTAL_USERS_COUNT';
 const TOOGLE_IS_FETCHING = 'social-network/users/TOOGLE_IS_FETCHING';
 const TOOGLE_IS_FOLLOWING_PROGRESS = 'social-network/users/TOOGLE_IS_FOLLOWING_PROGRESS';
-
-type UserType = {
-    id: number,
-    name: string,
-    status: string,
-    photos: PhotosType,
-    followed: boolean
-};
-
-type PhotosType = {
-    small: string,
-    large: string
-};
 
 let initialState = {
     users: [] as UserType[],

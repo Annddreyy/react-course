@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/Navbar/Navbar";
-import UsersContainer from "./components/Users/UsersContainer";
+import UsersContainer from "./components/Users/UsersContainer.tsx";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from './components/Login/LoginContainer';
