@@ -1,37 +1,9 @@
+import { PostType, ProfileInformationType } from "../../types/types";
+
 const ADD_POST = 'social-network/profile/ADD-POST';
 const SET_PROFILE_INFORMATION = 'social-network/profile/SET_PROFILE_INFORMATION';
 const SET_STATUS = 'social-network/profile/SET_STATUS';
 
-type PostType = {
-    id: number,
-    message: string,
-    likesCount: number
-};
-
-type ProfileInformationType = {
-    userId: number,
-    lookingForAJob: boolean,
-    lookingForAJobDescription: string,
-    fullName: string,
-    contacts: ContactsType,
-    photos: PhotosType
-};
-
-type ContactsType = {
-    github: string,
-    vk: string,
-    facebook: string,
-    instagram: string,
-    twitter: string,
-    website: string,
-    youtube: string,
-    mainLink: string
-};
-
-type PhotosType = {
-    small: string,
-    large: string
-};
 
 const initialState = {
     profileInformation: null as ProfileInformationType | null,
