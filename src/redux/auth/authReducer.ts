@@ -28,10 +28,12 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 };
 
+export type ActionTypes = SetUserDataActionType | SetCaptchaUrlType;
+
 type SetUserDataPayloadType = {
-    userId: number,
-    email: string,
-    login: string,
+    userId: number | null,
+    email: string | null,
+    login: string | null,
     isAuth: boolean
 };
 
@@ -40,7 +42,7 @@ type SetUserDataActionType = {
     payload: SetUserDataPayloadType
 };
 
-export const setUserDataActionCreator = (userId: number, email: string, login: string, isAuth: boolean): SetUserDataActionType => ({
+export const setUserDataActionCreator = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetUserDataActionType => ({
     type: SET_USER_DATA,
     payload: { userId, email, login, isAuth }
 });

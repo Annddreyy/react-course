@@ -1,8 +1,12 @@
 import { authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI } from "../../api/api.js";
 import { stopSubmit } from "redux-form";
-import { setCaptchaUrl, setUserDataActionCreator } from "./authReducer.ts";
+import { ActionTypes, setCaptchaUrl, setUserDataActionCreator } from "./authReducer.ts";
+import { ThunkAction } from "redux-thunk";
+import { AppStateType } from './../redux-store';
 
-export const authUserThunkCreator = () => async(dispatch) => {
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>;
+
+export const authUserThunkCreator = (): ThunkType => async(dispatch) => {
     let response = await authAPI.authUser();
     if (response.resultCode === ResultCodesEnum.Success) {
         let { id, email, login } = response.data;
@@ -10,8 +14,9 @@ export const authUserThunkCreator = () => async(dispatch) => {
     }
 };
 
-export const loginUserThunkCreator = (email, password, remember, captcha) => async(dispatch) => {
-    let response = await authAPI.loginUser(email, password, remember || false);
+export const loginUserThunkCreator = (email: string, password: string, remember = false, captcha = ''): ThunkType => 
+    async(dispatch) => {
+    let response = await authAPI.loginUser(email, password, remember, captcha);
     switch (response.resultCode) {
         case ResultCodesEnum.Success:
             dispatch(authUserThunkCreator());
@@ -25,14 +30,14 @@ export const loginUserThunkCreator = (email, password, remember, captcha) => asy
     }
 };
 
-export const logoutUserThunkCreator = () => async(dispatch) => {
+export const logoutUserThunkCreator = (): ThunkType => async(dispatch) => {
     let response = await authAPI.logoutUser()
     if (response.resultCode === 0) {
         dispatch(setUserDataActionCreator(null, null, null, false));
     }
 };
 
-export const getCaptchaUrl = () => async(dispatch) => {
+export const getCaptchaUrl = (): ThunkType => async(dispatch) => {
     let response = await securityAPI.getCaptchaUrl();
     let captchaUrl = response.url;
     dispatch(setCaptchaUrl(captchaUrl));
