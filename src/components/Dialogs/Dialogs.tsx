@@ -3,13 +3,24 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import NewMessageForm from "./NewMessageForm/NewMessageForm";
+import { DialogType, MessageType } from "../../types/types";
 
-const Dialogs = ({ dialogs, messages, newMessage, addNewMessage }) => {
-    debugger;
-    let dialogElements = dialogs.map(elem => <DialogItem name={elem.name} id={elem.id} key={elem.id} />);
-    let messageElements = messages.map(elem => <Message message={elem.message} id={elem.id} key={elem.id} />)
+type PropsType = {
+    dialogs: DialogType[],
+    messages: MessageType[],
+    newMessage: string | null,
+    addNewMessage: (message: string) => void
+};
 
-    const onSubmit = (formData) => {
+type FormDataType = {
+    'new-message': string
+}
+
+const Dialogs = ({ dialogs, messages, newMessage, addNewMessage }: PropsType) => {
+    let dialogElements = dialogs.map(dialog => <DialogItem name={ dialog.name } id={ dialog.id } key={ dialog.id } />);
+    let messageElements = messages.map(message => <Message message={ message.message} key={ message.id } />)
+
+    const onSubmit = (formData: FormDataType) => {
         addNewMessage(formData['new-message']);
     };
 

@@ -71,7 +71,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 		currentPage: getCurrentPage(state),
 		isFetching: getIsFetching(state),
 		followingInProgress: getFollowingInProgress(state),
-		isAuth: getIsAuth(state)
+		isAuth: getIsAuth(state),
 	};
 };
 

@@ -1,14 +1,6 @@
+import { DialogType, MessageType } from "../../types/types";
+
 const ADD_MESSAGE = 'social-network/messages/ADD-NEW-MESSAGE';
-
-type MessageType = {
-    id: number,
-    message: string
-};
-
-type DialogType = {
-    id: number,
-    name: string
-};
 
 const initialState = {
     messages:  [
@@ -25,7 +17,8 @@ const initialState = {
         { id: 3, name: "Ivan" },
         { id: 4, name: "Pete" },
         { id: 5, name: "Petr" },
-    ] as DialogType[]
+    ] as DialogType[],
+    newMessage: ''
 };
 
 export type InitialStateType = typeof initialState;

@@ -1,9 +1,9 @@
 import preloader from '../../../assets/gg.gif';
 import React from 'react';
 
-const Preloader = (props) => {
+const Preloader = () => {
     return (
-        <img src={preloader} alt=""></img>
+        <img src={ preloader } alt=""></img>
     )
 }
 
