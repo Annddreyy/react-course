@@ -2,13 +2,12 @@ import { authUserThunkCreator } from '../auth/authThunks';
 
 const SET_INITIALIZED = 'social-network/app/SET_INITIALIZED';
 
-export type InitialStateType = {
-    initialized: boolean
-}
 
-let initialState: InitialStateType = {
+let initialState = {
     initialized: false
 }
+
+export type InitialStateType = typeof initialState;
 
 const appReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {

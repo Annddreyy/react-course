@@ -2,12 +2,6 @@ const ADD_POST = 'social-network/profile/ADD-POST';
 const SET_PROFILE_INFORMATION = 'social-network/profile/SET_PROFILE_INFORMATION';
 const SET_STATUS = 'social-network/profile/SET_STATUS';
 
-export type InitialStateType = {
-    profileInformation: ProfileInformationType | null,
-    posts: PostType[],
-    status: string | null
-};
-
 type PostType = {
     id: number,
     message: string,
@@ -39,15 +33,17 @@ type PhotosType = {
     large: string
 };
 
-const initialState: InitialStateType = {
-    profileInformation: null,
+const initialState = {
+    profileInformation: null as ProfileInformationType | null,
     posts: [
         { id: 1, message: "My first post", likesCount: 12 },
         { id: 2, message: "My second post", likesCount: 21 },
         { id: 3, message: "My third post", likesCount: 8 },
-    ],
-    status: null
+    ] as PostType[],
+    status: null as string | null
 };
+
+export type InitialStateType = typeof initialState;
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {

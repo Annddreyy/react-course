@@ -8,15 +8,6 @@ const SET_TOTAL_USERS_COUNT = 'social-network/users/SET_TOTAL_USERS_COUNT';
 const TOOGLE_IS_FETCHING = 'social-network/users/TOOGLE_IS_FETCHING';
 const TOOGLE_IS_FOLLOWING_PROGRESS = 'social-network/users/TOOGLE_IS_FOLLOWING_PROGRESS';
 
-export type InitialStateType = {
-    users: UserType[],
-    pageSize: number,
-    totalUsersCount: number,
-    currentPage: number,
-    isFetching: boolean,
-    followingInProgress: boolean
-};
-
 type UserType = {
     id: number,
     name: string,
@@ -30,14 +21,16 @@ type PhotosType = {
     large: string
 };
 
-let initialState: InitialStateType = {
-    users: [],
+let initialState = {
+    users: [] as UserType[],
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProgress: false
 };
+
+export type InitialStateType = typeof initialState;
 
 const usersReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
