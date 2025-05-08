@@ -9,9 +9,9 @@ import LoginContainer from './components/Login/LoginContainer.tsx';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from './hoc/withRouter.js';
-import { actions } from './redux/app/appReducer.ts';
 import Preloader from './components/common/Preloader/Preloader.tsx';
 import { AppStateType } from './redux/redux-store.ts';
+import { initializeApp } from './redux/app/appThunks.ts';
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx"));
 
@@ -20,6 +20,7 @@ class App extends React.Component<PropsType> {
 		console.log( promiseRejectionEvent );
 	}
 	componentDidMount() {
+		debugger;
 		this.props.initializeApp();
 		window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
 	}
@@ -79,6 +80,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose(
-	connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { initializeApp: actions.setInitializedActionCreator }),
+	connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { initializeApp }),
 	withRouter
 )(App);

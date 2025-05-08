@@ -8,6 +8,7 @@ import { actions } from "./authReducer.ts";
 
 export const authUserThunkCreator = (): BaseThunkType<ActionTypes> => async(dispatch) => {
     let response = await authAPI.authUser();
+    debugger;
     if (response.resultCode === ResultCodesEnum.Success) {
         let { id, email, login } = response.data;
         dispatch(actions.setUserDataActionCreator(id, email, login, true));
