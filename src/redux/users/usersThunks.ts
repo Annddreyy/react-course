@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
-import { ResultCodesEnum, usersAPI } from "../../api/api.js";
+import { ResultCodesEnum } from "../../api/api.js";
+import { usersAPI } from './../../api/usersAPI.ts';
 import { actions, ActionTypes } from "./usersReducer.ts";
 import { ThunkAction } from "redux-thunk";
 import { AppStateType } from "../redux-store.ts";

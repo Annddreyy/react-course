@@ -1,5 +1,4 @@
-const SET_USER_DATA = 'social-network/auth/SET_USER_DATA';
-const GET_CAPTCHA = 'social-network/auth/GET_CAPTCHA';
+import { InferActionsType } from "../redux-store";
 
 let initialState = {
     userId: null as number | null,
@@ -13,12 +12,12 @@ export type InitialStateType = typeof initialState;
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case 'social-network/auth/SET_USER_DATA':
             return {
                 ...state,
                 ...action.payload
             }
-        case GET_CAPTCHA:
+        case 'social-network/auth/GET_CAPTCHA':
             return {
                 ...state,
                 captchaUrl: action.url
@@ -28,31 +27,14 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 };
 
-export type ActionTypes = SetUserDataActionType | SetCaptchaUrlType;
+export type ActionTypes = InferActionsType<typeof actions>;
 
-type SetUserDataPayloadType = {
-    userId: number | null,
-    email: string | null,
-    login: string | null,
-    isAuth: boolean
+export const actions = {
+    setUserDataActionCreator: (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => ({
+        type: 'social-network/auth/SET_USER_DATA',
+        payload: { userId, email, login, isAuth }
+    } as const),
+    setCaptchaUrl: (url: string) => ({ type: 'social-network/auth/GET_CAPTCHA', url } as const)
 };
-
-type SetUserDataActionType = {
-    type: typeof SET_USER_DATA,
-    payload: SetUserDataPayloadType
-};
-
-export const setUserDataActionCreator = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetUserDataActionType => ({
-    type: SET_USER_DATA,
-    payload: { userId, email, login, isAuth }
-});
-
-
-type SetCaptchaUrlType = {
-    type: typeof GET_CAPTCHA,
-    url: string
-};
-
-export const setCaptchaUrl = (url: string): SetCaptchaUrlType => ({ type: GET_CAPTCHA, url });
 
 export default authReducer;

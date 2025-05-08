@@ -15,7 +15,7 @@ export type InitialStateType = typeof initialState;
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
-        case 'ADD_POST':
+        case 'social-network/profile/ADD_POST':
             return {
                 ...state,
                 posts: [...state.posts, {
@@ -24,12 +24,12 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                     likesCount: 0
                 }],
             };
-        case 'SET_PROFILE_INFORMATION':
+        case 'social-network/profile/SET_PROFILE_INFORMATION':
             return {
                 ...state,
                 profileInformation: action.profileInformation
             }
-        case 'SET_STATUS':
+        case 'social-network/profile/SET_STATUS':
             return {
                 ...state,
                 status: action.status
@@ -42,9 +42,9 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
 export type ActionTypes = InferActionsType<typeof actions>;
 
 export const actions = {
-    addPostActionCreator: (text: string) => ({ type: 'ADD_POST', text } as const),
-    setProfileInformationActionCreator: (profileInformation: ProfileInformationType) => ({ type: 'SET_PROFILE_INFORMATION', profileInformation } as const),
-    setStatusActionCreator: (status: string) => ({ type: 'SET_STATUS', status } as const),
+    addPostActionCreator: (text: string) => ({ type: 'social-network/profile/ADD_POST', text } as const),
+    setProfileInformationActionCreator: (profileInformation: ProfileInformationType) => ({ type: 'social-network/profile/SET_PROFILE_INFORMATION', profileInformation } as const),
+    setStatusActionCreator: (status: string) => ({ type: 'social-network/profile/SET_STATUS', status } as const),
 };
 
 export default profileReducer;

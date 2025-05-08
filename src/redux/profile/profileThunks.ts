@@ -1,5 +1,6 @@
 import { ThunkAction } from "redux-thunk";
-import { profileAPI, ResultCodesEnum } from "../../api/api.ts";
+import { ResultCodesEnum } from "../../api/api.ts";
+import { profileAPI } from './../../api/profileAPI.ts';
 import { ActionTypes, actions } from "./profileReducer.ts";
 import { AppStateType } from "../redux-store.ts";
 
