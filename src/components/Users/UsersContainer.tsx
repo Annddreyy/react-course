@@ -27,10 +27,6 @@ type MapDispatchToPropsType = {
 	unfollowingThunkCreator: (userId: number) => void,
 }
 
-type OwnPropsType = {
-
-}
-
 class UsersContainer extends React.Component<PropsType> {
 	componentDidMount() {
 		this.getUsers(this.props.currentPage, this.props.pageSize);
@@ -76,6 +72,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose(
-	connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>(mapStateToProps, { getUsersThunkCreator, followingThunkCreator, unfollowingThunkCreator }),
+	connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { getUsersThunkCreator, followingThunkCreator, unfollowingThunkCreator }),
 	withAuthRedirect
 )(UsersContainer);

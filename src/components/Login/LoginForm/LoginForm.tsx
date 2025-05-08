@@ -1,12 +1,16 @@
 import React from 'react';
 import classes from './LoginForm.module.css';
-import { Field, reduxForm } from 'redux-form'
+import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 import { Input } from '../../common/FormsControls/FormsControls';
 import { requiredField } from '../../../utils/validators/validators';
-import styles from '../../common/FormsControls/FormsControls.module.css'
+import styles from '../../common/FormsControls/FormsControls.module.css';
+import { LoginFormDataType } from './../Login';
 
-const LoginForm = ({ handleSubmit, error, captcha }) => {
-    console.log( captcha );
+type OwnPropsType = {
+    captcha: string | null;
+}
+
+const LoginForm: React.FC<InjectedFormProps<LoginFormDataType, OwnPropsType> & OwnPropsType> = ({ handleSubmit, error, captcha }) => {
     return (
         <form className={ classes.form } onSubmit={ handleSubmit }>
             <label htmlFor="email">Логин:</label>
@@ -55,6 +59,4 @@ const LoginForm = ({ handleSubmit, error, captcha }) => {
     )
 };
 
-const ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm);
-
-export default ReduxLoginForm;
+export default reduxForm<LoginFormDataType, OwnPropsType>({ form: 'login' })(LoginForm);
