@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Message from './../../components/Dialogs/Message/Message';
+import Message from '../../components/Dialogs/Message/Message';
 
 describe('Message component', () => {
     test('renders span with status', () => {

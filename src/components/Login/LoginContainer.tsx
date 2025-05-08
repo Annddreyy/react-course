@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./Login.tsx";
-import { loginUserThunkCreator } from "../../redux/auth/authThunks";
+import { loginUserThunkCreator } from "../../redux/auth/authThunks.ts";
 import { connect } from "react-redux";
 import { AppStateType } from "../../redux/redux-store.ts";
 

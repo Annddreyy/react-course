@@ -1,22 +1,22 @@
 import React from 'react';
 import classes from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar.tsx";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
 import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
 import HeaderContainer from "./components/Header/HeaderContainer.tsx";
 import LoginContainer from './components/Login/LoginContainer.tsx';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter } from './hoc/withRouter';
-import { initializeApp } from './redux/app/appReducer.ts';
+import { withRouter } from './hoc/withRouter.js';
+import { actions } from './redux/app/appReducer.ts';
 import Preloader from './components/common/Preloader/Preloader.tsx';
+import { AppStateType } from './redux/redux-store.ts';
 
-const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx"));
 
-class App extends React.Component {
-	catchAllUnhandledErrors = (promiseRejectionEvent) => {
-		this.alert('error');
+class App extends React.Component<PropsType> {
+	catchAllUnhandledErrors = (promiseRejectionEvent: PromiseRejectionEvent) => {
 		console.log( promiseRejectionEvent );
 	}
 	componentDidMount() {
@@ -62,17 +62,23 @@ class App extends React.Component {
 	}
 };
 
-const mapStateToProps = (state) => {
+type PropsType = MapStateToPropsType & MapDispatchToPropsType;
+
+type MapStateToPropsType = {
+	initialized: boolean
+};
+
+type MapDispatchToPropsType = {
+	initializeApp: () => void
+};
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 	return {
 		initialized: state.app.initialized
 	}
 };
 
-const mapDispatchToProps = {
-	initializeApp
-};
-
 export default compose(
-	connect(mapStateToProps, { initializeApp }),
+	connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { initializeApp: actions.setInitializedActionCreator }),
 	withRouter
 )(App);

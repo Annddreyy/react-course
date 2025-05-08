@@ -3,10 +3,10 @@ import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } 
 import React from 'react';
 import Users from './Users.tsx';
 import Preloader from '../common/Preloader/Preloader.tsx';
-import { withAuthRedirect } from "../../hoc/withAuthRedirect.js";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect.tsx";
 import { compose } from "redux";
 import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users/userSelectors.ts";
-import { UserType } from "../../types/types.ts";
+import { UserType } from "../../types/types.tsx";
 import { AppStateType } from "../../redux/redux-store.ts";
 
 type PropsType = MapStateToPropsType & MapDispatchToPropsType;

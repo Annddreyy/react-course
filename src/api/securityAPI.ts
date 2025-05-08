@@ -1,4 +1,4 @@
-import { instance } from "./api";
+import { instance } from "./api.ts";
 
 type GetCaptchaType = {
     url: string

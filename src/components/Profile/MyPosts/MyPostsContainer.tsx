@@ -1,11 +1,11 @@
 import React from "react";
-import { addPostActionCreator } from "../../../redux/profile/profileReducer.ts";
+import { actions } from "../../../redux/profile/profileReducer.ts";
 import { connect } from "react-redux";
 import { AppStateType } from './../../../redux/redux-store.ts';
 import { PostType } from "../../../types/types.ts";
 import classes from './MyPosts.module.css'
-import Post from "./Post/Post";
-import ReduxNewPostForm from "./NewPost/NewPostForm";
+import Post from "./Post/Post.tsx";
+import ReduxNewPostForm from "./NewPost/NewPostForm.jsx";
 
 class MyPosts extends React.Component<PropsType> {
     render() {
@@ -54,7 +54,7 @@ type MapDispatchToPropsType = {
     addPostActionCreator: (text: string) => void
 }
 
-const MyPostsContainer = connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addPostActionCreator })(MyPosts);
+const MyPostsContainer = connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addPostActionCreator: actions.addPostActionCreator })(MyPosts);
 
 
 export default MyPostsContainer;

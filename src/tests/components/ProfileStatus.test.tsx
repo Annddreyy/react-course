@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ProfileStatus from './../../components/Profile/ProfileInfo/ProfileStatus/ProfileStatus';
+import ProfileStatus from '../../components/Profile/ProfileInfo/ProfileStatus/ProfileStatus';
 
 describe('ProfileStatus component', () => {
     test('renders span with status', () => {

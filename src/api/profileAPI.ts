@@ -1,4 +1,4 @@
-import { instance, DefaultResponseType } from "./api";
+import { instance, DefaultResponseType } from "./api.ts";
 import { ProfileInformationType } from "../types/types";
 
 export const profileAPI = {

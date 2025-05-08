@@ -1,4 +1,4 @@
-import { ResultCodeForCaptcha, ResultCodesEnum } from "../../api/api.js";
+import { ResultCodeForCaptcha, ResultCodesEnum } from "../../api/api.ts";
 import { authAPI } from './../../api/authAPI.ts';
 import { securityAPI } from './../../api/securityAPI.ts';
 import { stopSubmit } from "redux-form";

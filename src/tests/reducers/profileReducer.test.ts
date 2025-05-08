@@ -1,4 +1,4 @@
-import profileReducer, { addPostActionCreator } from "../../redux/profile/profileReducer";
+import profileReducer, { actions } from "../../redux/profile/profileReducer";
 
 let state = {
     profileInformation: null,
@@ -11,15 +11,13 @@ let state = {
 };
 
 test('length of posts should be incremented', () => {
-    let action = addPostActionCreator('test')
+    let action = actions.addPostActionCreator('test')
     let newState = profileReducer(state, action);
-
     expect(newState.posts.length).toBe(4);    
 });
 
 test('new message should be "test"', () => {
-    let action = addPostActionCreator('test')
+    let action = actions.addPostActionCreator('test')
     let newState = profileReducer(state, action);
-
     expect(newState.posts[3].message).toBe('test');    
 });

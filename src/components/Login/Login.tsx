@@ -1,5 +1,5 @@
 import React from 'react';
-import ReduxLoginForm from './LoginForm/LoginForm';
+import ReduxLoginForm from './LoginForm/LoginForm.tsx';
 import classes from './Login.module.css';
 import { Navigate } from 'react-router-dom';
 

@@ -1,10 +1,10 @@
 import Dialogs from './Dialogs.tsx'
-import { addNewMessageActionCreator } from "../../redux/messages/messagesReducer.ts";
+import { actions } from "../../redux/messages/messagesReducer.ts";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.tsx';
 import { AppStateType } from '../../redux/redux-store.ts';
-import { DialogType, MessageType } from '../../types/types.ts';
+import { DialogType, MessageType } from '../../types/types.tsx';
 
 type MapStateToPropsType = {
     dialogs: DialogType[],
@@ -27,6 +27,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose(
-    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addNewMessageActionCreator }),
+    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addNewMessageActionCreator: actions.addNewMessageActionCreator }),
     withAuthRedirect
 ) (Dialogs);

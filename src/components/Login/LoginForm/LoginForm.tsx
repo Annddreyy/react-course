@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './LoginForm.module.css';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
-import { Input } from '../../common/FormsControls/FormsControls';
-import { requiredField } from '../../../utils/validators/validators';
+import { Input } from '../../common/FormsControls/FormsControls.tsx';
+import { requiredField } from '../../../utils/validators/validators.ts';
 import styles from '../../common/FormsControls/FormsControls.module.css';
-import { LoginFormDataType } from './../Login';
+import { LoginFormDataType } from './../Login.tsx';
 
 type OwnPropsType = {
     captcha: string | null;
