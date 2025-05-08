@@ -5,7 +5,7 @@ type MessageType = {
     message: string
 };
 
-const Message = ({ message }: MessageType) => {
+const Message: React.FC<MessageType> = ({ message }) => {
     return (
         <div className={ classes.message }>
             { message }

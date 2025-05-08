@@ -11,7 +11,7 @@ type PropsType = {
     unfollowingThunkCreator: (userId: number) => void
 }
 
-const User = ({ followingInProgress, followingThunkCreator, unfollowingThunkCreator, user }: PropsType) => {
+const User: React.FC<PropsType> = ({ user, followingInProgress, followingThunkCreator, unfollowingThunkCreator }) => {
     debugger;
     return (
         <div className={classes.user}>

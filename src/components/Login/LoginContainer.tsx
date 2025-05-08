@@ -21,7 +21,7 @@ type MapDispatchToPropsType = {
     loginUserThunkCreator: (email: string, password: string, remember: boolean, captcha: string) => void
 }
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+const mapStateToProps = (state: AppStateType) => {
 	return {
 		captcha: state.auth.captchaUrl,
 		isAuth: state.auth.isAuth,

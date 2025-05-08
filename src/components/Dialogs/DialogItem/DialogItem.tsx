@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import classes from './DialogItem.module.css';
 import { DialogType } from "../../../types/types";
 
-const DialogItem = ({ id, name }: DialogType) => {
+const DialogItem: React.FC<DialogType> = ({ id, name }) => {
     const path = '/dialogs/' + id;
     return (
         <div className={classes.dialog}>

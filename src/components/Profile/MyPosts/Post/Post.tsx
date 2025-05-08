@@ -7,7 +7,7 @@ type PostType = {
     likesCount: number
 };
 
-const Post = ({ img, message, likesCount }: PostType) => {
+const Post: React.FC<PostType> = ({ img, message, likesCount }) => {
     return (
         <article className={classes.item}>
             <div className="top">

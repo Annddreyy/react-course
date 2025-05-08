@@ -34,7 +34,7 @@ class MyPosts extends React.Component<PropsType> {
     }
 };
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         posts: state.profilePage.posts
     }

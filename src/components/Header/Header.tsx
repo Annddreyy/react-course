@@ -8,7 +8,7 @@ type PropsType = {
     logoutUserThunkCreator: () => void,
 };
 
-const Header = ({ isAuth, logoutUserThunkCreator, login }: PropsType) => {
+const Header: React.FC<PropsType> = ({ isAuth, logoutUserThunkCreator, login }: PropsType) => {
     return (
         <header className={classes.header}>
 			<img src="https://jnsenfeng.ru/images/vk.png" alt=""></img>

@@ -16,7 +16,7 @@ type PropsType = {
     unfollowingThunkCreator: (userId: number) => void
 }
 
-const Users = ({ users, followingInProgress, followingThunkCreator, unfollowingThunkCreator, portionSize = 10, ...page }: PropsType) => {
+const Users: React.FC<PropsType> = ({ users, followingInProgress, followingThunkCreator, unfollowingThunkCreator, portionSize = 10, ...page }) => {
     let usersElements = users.map( user => 
         <User 
             user={ user } 

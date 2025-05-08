@@ -16,7 +16,7 @@ export type LoginFormDataType = {
     captcha: string
 };
 
-const Login = ({ isAuth, captcha, loginUserThunkCreator }: PropsType) => {
+const Login: React.FC<PropsType> = ({ isAuth, captcha, loginUserThunkCreator }) => {
     const onSubmit = ({ email, password, remember = false, captcha }: LoginFormDataType) => {
         loginUserThunkCreator(email, password, remember, captcha);
     };

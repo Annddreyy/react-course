@@ -27,7 +27,7 @@ type MapDispatchToProps = {
     logoutUserThunkCreator: () => void
 }
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         isAuth: state.auth.isAuth,
         login: state.auth.login

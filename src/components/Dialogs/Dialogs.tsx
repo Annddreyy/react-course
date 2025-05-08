@@ -16,7 +16,7 @@ export type NewMessageFormDataType = {
     'new-message': string
 }
 
-const Dialogs = ({ dialogs, messages, newMessage, addNewMessage }: PropsType) => {
+const Dialogs: React.FC<PropsType> = ({ dialogs, messages, newMessage, addNewMessage }) => {
     let dialogElements = dialogs.map(dialog => <DialogItem name={ dialog.name } id={ dialog.id } key={ dialog.id } />);
     let messageElements = messages.map(message => <Message message={ message.message} key={ message.id } />)
 

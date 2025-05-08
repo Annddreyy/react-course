@@ -17,7 +17,7 @@ type MapDispatchToPropsType = {
     addNewMessage: (message: string) => void
 }
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         dialogs: state.messagesPage.dialogs,
         messages: state.messagesPage.messages,
