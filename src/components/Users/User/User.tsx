@@ -2,25 +2,23 @@ import React from "react";
 import photoImg from '../../../assets/people.jpeg';
 import { NavLink } from 'react-router-dom';
 import classes from './User.module.css';
+import { UserType } from "../../../types/types";
 
 type PropsType = {
-    id: number,
-    name: string,
-    status: string,
-    photo: string,
-    followed: boolean,
+    user: UserType,
     followingInProgress: boolean,
     followingThunkCreator: (userId: number) => void,
     unfollowingThunkCreator: (userId: number) => void
 }
 
-const User = ({ followingInProgress, followingThunkCreator, unfollowingThunkCreator, ...user }: PropsType) => {
+const User = ({ followingInProgress, followingThunkCreator, unfollowingThunkCreator, user }: PropsType) => {
+    debugger;
     return (
         <div className={classes.user}>
             <div className={classes['left-part']}>
                 <div>
                     <NavLink to={"/profile/" + user.id}>
-                        <img src={ user.photo ? user.photo : photoImg } alt="" />
+                        <img src={ user.photos.small ? user.photos.small : photoImg } alt="" />
                     </NavLink>
                 </div>
                 { user.followed 

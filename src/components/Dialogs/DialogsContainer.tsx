@@ -14,7 +14,7 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-    addNewMessageActionCreator: (message: string) => void
+    addNewMessage: (message: string) => void
 }
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
@@ -27,6 +27,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose(
-    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addNewMessageActionCreator: actions.addNewMessageActionCreator }),
+    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addNewMessage: actions.addNewMessageActionCreator }),
     withAuthRedirect
 ) (Dialogs);

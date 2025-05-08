@@ -19,8 +19,7 @@ type PropsType = {
 const Users = ({ users, followingInProgress, followingThunkCreator, unfollowingThunkCreator, portionSize = 10, ...page }: PropsType) => {
     let usersElements = users.map( user => 
         <User 
-            {...user} 
-            photo={ user.photos.small } 
+            user={ user } 
             followingInProgress={ followingInProgress }
             followingThunkCreator={ followingThunkCreator }
             unfollowingThunkCreator={ unfollowingThunkCreator }
@@ -37,7 +36,7 @@ const Users = ({ users, followingInProgress, followingThunkCreator, unfollowingT
                 totalItemsCount={ page.totalItemsCount } 
                 currentPage={ page.currentPage } 
                 setCurrentPage={ page.setCurrentPage } 
-                portionSize={ page.portionSize }
+                portionSize={ 10 }
             />
         </section>
     )

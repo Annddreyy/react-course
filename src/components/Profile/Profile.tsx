@@ -7,7 +7,7 @@ import { ProfileInformationType } from "../../types/types";
 export type ProfileInfoType = {
     profileInformation: ProfileInformationType | null, 
     status: string | null, 
-    updateStatus: (status: string) => void
+    updateStatus: (status: string | null) => void
 };
 
 const Profile = (props: ProfileInfoType) => {

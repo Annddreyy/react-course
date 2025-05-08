@@ -5,7 +5,7 @@ import { AppStateType } from './../../../redux/redux-store.ts';
 import { PostType } from "../../../types/types.ts";
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post.tsx";
-import ReduxNewPostForm from "./NewPost/NewPostForm.jsx";
+import ReduxNewPostForm from "./NewPost/NewPostForm.tsx";
 
 class MyPosts extends React.Component<PropsType> {
     render() {
@@ -18,14 +18,14 @@ class MyPosts extends React.Component<PropsType> {
             />
         );
         
-        const onSubmit = (formData: FormDataType) => {
+        const onSubmit = (formData: NewPostFormDataType) => {
             this.props.addPostActionCreator(formData['new-post']);
         };
     
         return (
             <section className={ classes.section }>
                 <h3>My posts</h3>
-                <ReduxNewPostForm onSubmit={ onSubmit }  />
+                <ReduxNewPostForm onSubmit={ onSubmit } />
                 <div className= {classes.posts }>
                     { postElements }
                 </div>
@@ -34,9 +34,15 @@ class MyPosts extends React.Component<PropsType> {
     }
 };
 
-type FormDataType = {
-    'new-post': string
-}
+let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+    return {
+        posts: state.profilePage.posts
+    }
+};
+
+const MyPostsContainer = connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addPostActionCreator: actions.addPostActionCreator })(MyPosts);
+
+export default MyPostsContainer;
 
 type PropsType = MapStateToPropsType & MapDispatchToPropsType;
 
@@ -44,17 +50,10 @@ type MapStateToPropsType = {
     posts: PostType[]
 };
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-    return {
-        posts: state.profilePage.posts
-    }
-};
-
 type MapDispatchToPropsType = {
     addPostActionCreator: (text: string) => void
 }
 
-const MyPostsContainer = connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addPostActionCreator: actions.addPostActionCreator })(MyPosts);
-
-
-export default MyPostsContainer;
+export type NewPostFormDataType = {
+    'new-post': string
+}
