@@ -26,9 +26,9 @@ const _followUnfollowFlow = async (dispatch: DispatchType, userId: number, apiMe
 }
 
 export const followingThunkCreator = (userId: number): BaseThunkType<ActionTypes> => async(dispatch) => {
-    _followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(this), actions.follow);
+    await _followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(this), actions.follow);
 };
 
 export const unfollowingThunkCreator = (userId: number): BaseThunkType<ActionTypes> => async(dispatch) => {
-    _followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(this), actions.unfollow);
+    await _followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(this), actions.unfollow);
 };
