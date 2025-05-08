@@ -1,13 +1,6 @@
 import { UserType } from "../../types/types";
 import { updateObjectInArray } from "../../utils/object-helpers";
-
-const FOLLOW = 'social-network/users/FOLLOW';
-const UNFOLLOW = 'social-network/users/UNFOLLOW';
-const SET_USERS = 'social-network/users/SET-USERS';
-const SET_CURRENT_PAGE = "social-network/users/SET_CURRENT_PAGE";
-const SET_TOTAL_USERS_COUNT = 'social-network/users/SET_TOTAL_USERS_COUNT';
-const TOOGLE_IS_FETCHING = 'social-network/users/TOOGLE_IS_FETCHING';
-const TOOGLE_IS_FOLLOWING_PROGRESS = 'social-network/users/TOOGLE_IS_FOLLOWING_PROGRESS';
+import { InferActionsType } from "../redux-store";
 
 let initialState = {
     users: [] as UserType[],
@@ -22,84 +15,45 @@ export type InitialStateType = typeof initialState;
 
 const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
     switch(action.type) {
-        case FOLLOW:
+        case 'FOLLOW':
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', { followed: true })
             }
-        case UNFOLLOW:
+        case 'UNFOLLOW':
             return {
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', { followed: false })
             }
-        case SET_USERS:
-            debugger;
+        case 'SET_USERS':
             return {
                 ...state,
                 users: [...action.users]
             }
-        case SET_CURRENT_PAGE:
+        case 'SET_CURRENT_PAGE':
             return { ...state, currentPage: action.currentPage }
-        case SET_TOTAL_USERS_COUNT:
+        case 'SET_TOTAL_USERS_COUNT':
             return { ...state, totalUsersCount: action.totalUsersCount } 
-        case TOOGLE_IS_FETCHING:
+        case 'TOOGLE_IS_FETCHING':
             return { ...state, isFetching: action.isFetching }
-        case TOOGLE_IS_FOLLOWING_PROGRESS:
+        case 'TOOGLE_IS_FOLLOWING_PROGRESS':
             return { ...state, followingInProgress: action.followingInProgress }
         default:
             return state;
     }
 };
 
-export type ActionTypes = FollowType | UnfollowType | SetUsersType | SetCurrentPageType | SetTotalUsersCount | SetIsFetchingType | ToogleIsFollowingProgressType;
+export type ActionTypes = InferActionsType<typeof actions>;
 
-export type FollowType = {
-    type: typeof FOLLOW,
-    userId: number
-};
+export const actions = {
+    follow: (userId: number) => ({ type: 'FOLLOW', userId } as const),
+    unfollow: (userId: number) => ({ type: 'UNFOLLOW', userId } as const),
+    setUsers: (users: UserType[]) => ({ type: 'SET_USERS', users } as const),
+    setCurrentPage: (currentPage: number) => ({ type: 'SET_CURRENT_PAGE', currentPage } as const),
+    setTotalUsersCount: (totalUsersCount: number) => ({ type: 'SET_TOTAL_USERS_COUNT', totalUsersCount } as const),
+    setIsFetching: (isFetching: boolean) => ({ type: 'TOOGLE_IS_FETCHING', isFetching } as const),
+    toogleIsFollowingProgress: (followingInProgress: boolean) => ({ type: 'TOOGLE_IS_FOLLOWING_PROGRESS', followingInProgress } as const),
+}
 
-export const follow = (userId: number): FollowType => ({ type: FOLLOW, userId });
-
-export type UnfollowType = {
-    type: typeof UNFOLLOW,
-    userId: number
-};
-
-export const unfollow = (userId: number): UnfollowType => ({ type: UNFOLLOW, userId });
-
-type SetUsersType = {
-    type: typeof SET_USERS,
-    users: UserType[]
-};
-
-export const setUsers = (users: UserType[]): SetUsersType => ({ type: SET_USERS, users });
-
-type SetCurrentPageType = {
-    type: typeof SET_CURRENT_PAGE,
-    currentPage: number
-};
-
-export const setCurrentPage = (currentPage: number): SetCurrentPageType => ({ type: SET_CURRENT_PAGE, currentPage });
-
-type SetTotalUsersCount = {
-    type: typeof SET_TOTAL_USERS_COUNT,
-    totalUsersCount: number
-};
-
-export const setTotalUsersCount = (totalUsersCount: number): SetTotalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
-
-type SetIsFetchingType = {
-    type: typeof TOOGLE_IS_FETCHING;
-    isFetching: boolean
-};
-
-export const setIsFetching = (isFetching: boolean): SetIsFetchingType => ({ type: TOOGLE_IS_FETCHING, isFetching });
-
-type ToogleIsFollowingProgressType = {
-    type: typeof TOOGLE_IS_FOLLOWING_PROGRESS,
-    followingInProgress: boolean
-};
-
-export const toogleIsFollowingProgress = (followingInProgress: boolean): ToogleIsFollowingProgressType => ({ type: TOOGLE_IS_FOLLOWING_PROGRESS, followingInProgress });
 
 export default usersReducer;

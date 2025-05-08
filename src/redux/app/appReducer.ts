@@ -1,4 +1,5 @@
 import { authUserThunkCreator } from '../auth/authThunks';
+import { InferActionsType } from '../redux-store';
 
 const SET_INITIALIZED = 'social-network/app/SET_INITIALIZED';
 
@@ -21,19 +22,11 @@ const appReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
-type InitializedActionType = {
-    type: typeof SET_INITIALIZED
-}
+export type ActionTypes = InferActionsType<typeof actions>;
 
-export const setInitializedActionCreator = (): InitializedActionType => ({ type: SET_INITIALIZED });
+export const actions = {
+    setInitializedActionCreator: () => ({ type: SET_INITIALIZED })
+};
 
-export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(authUserThunkCreator());
-
-    Promise.all([promise])
-    .then(
-        () => dispatch(setInitializedActionCreator())
-    );
-}
 
 export default appReducer;

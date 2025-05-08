@@ -1,9 +1,5 @@
 import { PostType, ProfileInformationType } from "../../types/types";
-
-const ADD_POST = 'social-network/profile/ADD-POST';
-const SET_PROFILE_INFORMATION = 'social-network/profile/SET_PROFILE_INFORMATION';
-const SET_STATUS = 'social-network/profile/SET_STATUS';
-
+import { InferActionsType } from "../redux-store";
 
 const initialState = {
     profileInformation: null as ProfileInformationType | null,
@@ -19,7 +15,7 @@ export type InitialStateType = typeof initialState;
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
-        case ADD_POST:
+        case 'ADD_POST':
             return {
                 ...state,
                 posts: [...state.posts, {
@@ -28,12 +24,12 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
                     likesCount: 0
                 }],
             };
-        case SET_PROFILE_INFORMATION:
+        case 'SET_PROFILE_INFORMATION':
             return {
                 ...state,
                 profileInformation: action.profileInformation
             }
-        case SET_STATUS:
+        case 'SET_STATUS':
             return {
                 ...state,
                 status: action.status
@@ -43,27 +39,12 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
     }
 };
 
-export type ActionTypes = AddPostActionType | SetStatusActionType | SetProfileInformationActionType;
+export type ActionTypes = InferActionsType<typeof actions>;
 
-type AddPostActionType = {
-    type: typeof ADD_POST,
-    text: string
+export const actions = {
+    addPostActionCreator: (text: string) => ({ type: 'ADD_POST', text } as const),
+    setProfileInformationActionCreator: (profileInformation: ProfileInformationType) => ({ type: 'SET_PROFILE_INFORMATION', profileInformation } as const),
+    setStatusActionCreator: (status: string) => ({ type: 'SET_STATUS', status } as const),
 };
-
-export const addPostActionCreator = (text: string): AddPostActionType => ({ type: ADD_POST, text });
-
-type SetProfileInformationActionType = {
-    type: typeof SET_PROFILE_INFORMATION,
-    profileInformation: ProfileInformationType
-};
-
-export const setProfileInformationActionCreator = (profileInformation: ProfileInformationType): SetProfileInformationActionType => ({ type: SET_PROFILE_INFORMATION, profileInformation });
-
-type SetStatusActionType = {
-    type: typeof SET_STATUS,
-    status: string
-};
-
-export const setStatusActionCreator = (status: string): SetStatusActionType => ({ type: SET_STATUS, status });
 
 export default profileReducer;

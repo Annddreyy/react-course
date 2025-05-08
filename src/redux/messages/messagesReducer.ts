@@ -1,7 +1,5 @@
 import { DialogType, MessageType } from "../../types/types";
 
-const ADD_MESSAGE = 'social-network/messages/ADD-NEW-MESSAGE';
-
 const initialState = {
     messages:  [
         { id: 1, message: "Hi" },
@@ -35,11 +33,11 @@ const messagesReducer = (state = initialState, action: any): InitialStateType =>
     }
 };
 
-type AddNewMessageActionType = {
-    type: typeof ADD_MESSAGE,
-    text: string
-};
+export ActionTypes = 
 
-export const addNewMessageActionCreator = (text: string): AddNewMessageActionType => ({ type: ADD_MESSAGE, text });
+export const actions = {
+    addNewMessageActionCreator: (text: string) => ({ type: ADD_MESSAGE, text })
+}
+
 
 export default messagesReducer;
