@@ -17,8 +17,8 @@ export enum ResultCodeForCaptcha {
     CaptchaIsRequired = 10
 };
 
-export type DefaultResponseType = {
-    resultCode: ResultCodesEnum,
+export type DefaultResponseType<D = {}, RC = ResultCodesEnum> = {
+    data: D
+    resultCode: RC,
     messages: string[],
-    data: {}
 };
