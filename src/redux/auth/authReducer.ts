@@ -9,6 +9,7 @@ let initialState = {
 };
 
 export type InitialStateType = typeof initialState;
+export type ActionTypes = InferActionsType<typeof actions>;
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -26,8 +27,6 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
             return state;
     }
 };
-
-export type ActionTypes = InferActionsType<typeof actions>;
 
 export const actions = {
     setUserDataActionCreator: (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => ({

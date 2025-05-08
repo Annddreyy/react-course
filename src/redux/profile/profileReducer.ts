@@ -12,6 +12,7 @@ const initialState = {
 };
 
 export type InitialStateType = typeof initialState;
+export type ActionTypes = InferActionsType<typeof actions>;
 
 const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -38,8 +39,6 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return state;
     }
 };
-
-export type ActionTypes = InferActionsType<typeof actions>;
 
 export const actions = {
     addPostActionCreator: (text: string) => ({ type: 'social-network/profile/ADD_POST', text } as const),

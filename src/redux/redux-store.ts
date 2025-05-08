@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose } from 'redux';
+import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose, Action } from 'redux';
 
 import profileReducer from './profile/profileReducer.ts';
 import messagesReducer from './messages/messagesReducer.ts';
@@ -7,7 +7,7 @@ import authReducer from './auth/authReducer.ts';
 import appReducer from './app/appReducer.ts';
 import { reducer as formReducer } from 'redux-form';
 
-import { thunk as thunkMiddleware } from 'redux-thunk';
+import { ThunkAction, thunk as thunkMiddleware } from 'redux-thunk';
 
 // Этот объект надо воспринимать не как связку reducer, а state (3 ветки - 3 reducer)
 // То есть redux автоматически создает state с этими 3 свойствами, так как reducer возвращает state
@@ -26,6 +26,8 @@ export type AppStateType = ReturnType<RootReducerType>;
 
 type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U : never;
 export type InferActionsType<T extends {[key: string]: (...args: any[]) => any}> = ReturnType<PropertiesTypes<T>>;
+
+export type ThunkType<AT extends Action, R = Promise<void>> = ThunkAction<R, AppStateType, unknown, AT>;
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

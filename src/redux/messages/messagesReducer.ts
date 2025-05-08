@@ -21,6 +21,7 @@ const initialState = {
 };
 
 export type InitialStateType = typeof initialState;
+export type ActionTypes = InferActionsType<typeof actions>;
 
 const messagesReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
@@ -34,11 +35,8 @@ const messagesReducer = (state = initialState, action: any): InitialStateType =>
     }
 };
 
-export type ActionTypes = InferActionsType<typeof actions>;
-
 export const actions = {
     addNewMessageActionCreator: (text: string) => ({ type: 'social-network/messages/ADD_MESSAGE', text } as const)
 }
-
 
 export default messagesReducer;

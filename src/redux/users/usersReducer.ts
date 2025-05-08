@@ -12,6 +12,7 @@ let initialState = {
 };
 
 export type InitialStateType = typeof initialState;
+export type ActionTypes = InferActionsType<typeof actions>;
 
 const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
     switch(action.type) {
@@ -43,7 +44,6 @@ const usersReducer = (state = initialState, action: ActionTypes): InitialStateTy
     }
 };
 
-export type ActionTypes = InferActionsType<typeof actions>;
 
 export const actions = {
     follow: (userId: number) => ({ type: 'social-network/users/FOLLOW', userId } as const),

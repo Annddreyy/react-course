@@ -5,6 +5,7 @@ let initialState = {
 }
 
 export type InitialStateType = typeof initialState;
+export type ActionTypes = InferActionsType<typeof actions>;
 
 const appReducer = (state = initialState, action: any): InitialStateType => {
     switch(action.type) {
@@ -18,11 +19,8 @@ const appReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
-export type ActionTypes = InferActionsType<typeof actions>;
-
 export const actions = {
     setInitializedActionCreator: () => ({ type: 'social-network/app/SET_INITIALIZED' })
 };
-
 
 export default appReducer;
