@@ -1,14 +1,12 @@
 import { Dispatch } from "redux";
-import { ResultCodesEnum } from "../../api/api.js";
+import { ResultCodesEnum } from "../../api/api.ts";
 import { usersAPI } from './../../api/usersAPI.ts';
 import { actions, ActionTypes } from "./usersReducer.ts";
-import { ThunkAction } from "redux-thunk";
-import { AppStateType } from "../redux-store.ts";
+import { BaseThunkType } from "../redux-store.ts";
 
 type DispatchType = Dispatch<ActionTypes>;
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number): ThunkType => async(dispatch) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number): BaseThunkType<ActionTypes> => async(dispatch) => {
     dispatch(actions.setIsFetching(true));
     dispatch(actions.setCurrentPage(currentPage));
     
@@ -27,10 +25,10 @@ const _followUnfollowFlow = async (dispatch: DispatchType, userId: number, apiMe
     }
 }
 
-export const followingThunkCreator = (userId: number): ThunkType => async(dispatch) => {
+export const followingThunkCreator = (userId: number): BaseThunkType<ActionTypes> => async(dispatch) => {
     _followUnfollowFlow(dispatch, userId, usersAPI.followUser.bind(this), actions.follow);
 };
 
-export const unfollowingThunkCreator = (userId: number): ThunkType => async(dispatch) => {
+export const unfollowingThunkCreator = (userId: number): BaseThunkType<ActionTypes> => async(dispatch) => {
     _followUnfollowFlow(dispatch, userId, usersAPI.unfollowUser.bind(this), actions.unfollow);
 };

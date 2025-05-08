@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from "../../redux/users/usersThunks.js";
+import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from "../../redux/users/usersThunks.ts";
 import React from 'react';
 import Users from './Users.tsx';
-import Preloader from '../common/Preloader/Preloader.jsx';
+import Preloader from '../common/Preloader/Preloader.tsx';
 import { withAuthRedirect } from "../../hoc/withAuthRedirect.js";
 import { compose } from "redux";
-import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users/userSelectors.js";
+import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users/userSelectors.ts";
 import { UserType } from "../../types/types.ts";
 import { AppStateType } from "../../redux/redux-store.ts";
 

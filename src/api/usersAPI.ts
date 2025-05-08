@@ -1,4 +1,4 @@
-import { instance } from "./api";
+import { instance } from "./api.ts";
 import { DefaultResponseType } from "./api";
 import { UserType } from "../types/types";
 

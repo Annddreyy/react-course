@@ -3,14 +3,14 @@ import classes from './App.module.css';
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginContainer from './components/Login/LoginContainer';
+import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
+import HeaderContainer from "./components/Header/HeaderContainer.tsx";
+import LoginContainer from './components/Login/LoginContainer.tsx';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from './hoc/withRouter';
 import { initializeApp } from './redux/app/appReducer.ts';
-import Preloader from './components/common/Preloader/Preloader';
+import Preloader from './components/common/Preloader/Preloader.tsx';
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 
@@ -73,6 +73,6 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-	connect(mapStateToProps, mapDispatchToProps),
+	connect(mapStateToProps, { initializeApp }),
 	withRouter
 )(App);
