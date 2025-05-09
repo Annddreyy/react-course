@@ -1,7 +1,7 @@
 import { InferActionsType } from "../redux-store";
 
 let initialState = {
-    userId: null as number | null,
+    userId: 0,
     email: null as string | null,
     login: null as string | null,
     isAuth: false,

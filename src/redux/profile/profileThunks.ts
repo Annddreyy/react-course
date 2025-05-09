@@ -13,11 +13,11 @@ export const getStatusThunkCreator = (userId: number): BaseThunkType<ActionTypes
     dispatch(actions.setStatusActionCreator(response));
 };
 
-export const updateStatusThunkCreator = (status: string): BaseThunkType<ActionTypes> => async(dispatch) => {
+export const updateStatusThunkCreator = (status: string | null): BaseThunkType<ActionTypes> => async(dispatch) => {
     try {
-        let response = await profileAPI.setStatus(status);
+        let response = await profileAPI.setStatus(status || '');
         if (response.resultCode === ResultCodesEnum.Success) {
-            dispatch(actions.setStatusActionCreator(status));
+            dispatch(actions.setStatusActionCreator(status || ''));
         }
     } catch(err) {}
 };

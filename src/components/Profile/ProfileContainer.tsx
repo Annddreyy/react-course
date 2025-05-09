@@ -2,18 +2,26 @@ import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
 import { getStatusThunkCreator, setProfileThunkCreator, updateStatusThunkCreator } from '../../redux/profile/profileThunks';
-import { withRouter } from '../../hoc/withRouter.js';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { AppStateType } from '../../redux/redux-store';
 import { ProfileInformationType } from '../../types/types';
+import { withRouter } from '../../hoc/withRouter';
 
 class ProfileContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.getUserInformation();
     }
 
+    componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any): void {
+        // @ts-ignore
+        if (prevProps.params.userId !== this.props.params.userId) {
+            this.getUserInformation();
+        }
+    }
+
     getUserInformation() {
+        // @ts-ignore
         let userId = this.props.params.userId;
         if (!userId) { userId = this.props.userId; }
         this.props.setProfileThunkCreator(userId);
@@ -36,7 +44,7 @@ type PropsType = MapStateToPropsType & MapDispatchToPropsType;
 type MapStateToPropsType = {
     profileInformation: ProfileInformationType | null,
     status: string | null,
-    userId: number | null
+    userId: number
 };
 
 type MapDispatchToPropsType = {
@@ -45,7 +53,7 @@ type MapDispatchToPropsType = {
     updateStatusThunkCreator: (status: string | null) => void
 };
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         profileInformation: state.profilePage.profileInformation,
         status: state.profilePage.status,
@@ -56,5 +64,5 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export default compose(
     connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { setProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator }),
     withAuthRedirect,
-    withRouter,
-)(ProfileContainer);
+    withRouter
+)(ProfileContainer) as React.ComponentType<any>;

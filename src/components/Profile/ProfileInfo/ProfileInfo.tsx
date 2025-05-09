@@ -3,6 +3,7 @@ import Preloader from '../../common/Preloader/Preloader';
 import classes from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import { ProfileInfoType } from "../Profile";
+import img from './../../../assets/people.jpeg';
 
 const ProfileInfo = ({ profileInformation, status, updateStatus }: ProfileInfoType) => {
     if (!profileInformation) {
@@ -19,7 +20,7 @@ const ProfileInfo = ({ profileInformation, status, updateStatus }: ProfileInfoTy
             </div>
             <div className={ classes.items }>
                 <div className={ classes['about-right'] }>
-                    <img src={ profileInformation.photos.large } alt="" />
+                    <img src={ profileInformation.photos.large ||  img } alt="" />
                     <p>{ profileInformation.fullName }</p>
                 </div>
                 <div className={classes['about-left']}>

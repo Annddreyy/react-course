@@ -1,5 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { FilterType } from "../../../redux/users/usersReducer";
+import { useSelector } from "react-redux";
+import { getUserFilter } from "../../../redux/users/userSelectors";
 
 const validate = (values: FilterType) => {
     const errors = {};
@@ -12,6 +14,7 @@ type PropsType = {
 
 const UserSearchForm: React.FC<PropsType> = (props) => {
 
+    const filter = useSelector(getUserFilter);
     const submit = (values: FilterType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
         props.onFilterChanged(values);
         setTimeout(() => {
@@ -22,7 +25,8 @@ const UserSearchForm: React.FC<PropsType> = (props) => {
     return (
         <div>
             <Formik
-                initialValues={{ term: '', friend: null }}
+                enableReinitialize
+                initialValues={{ ...filter }}
                 validate={ validate }
                 onSubmit={ submit }
             >
