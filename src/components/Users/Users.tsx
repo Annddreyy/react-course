@@ -9,6 +9,7 @@ import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount
 import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from '../../redux/users/usersThunks';
 import { AppDispatch } from '../../redux/redux-store';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Button, DatePicker } from 'antd';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 

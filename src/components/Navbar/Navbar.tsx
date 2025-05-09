@@ -1,30 +1,23 @@
 import React from "react";
 import classes from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
+import { Menu } from "antd";
+import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 
 const Navbar: React.FC = () => {
     return (
         <nav className={classes['left-navigation']}>
-			<ul className={classes.items}>
-				<li>
-					<NavLink to="/profile" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Профиль</NavLink>
-				</li>
-				<li>
-					<NavLink to="/dialogs" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Сообщения</NavLink>
-				</li>
-				<li>
-					<NavLink to="/news" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Новости</NavLink>
-				</li>
-				<li>
-					<NavLink to="/music" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Музыка</NavLink>
-				</li>
-				<li>
-					<NavLink to="/settings" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Настройки</NavLink>
-				</li>
-				<li>
-					<NavLink to="/users" className={({ isActive }) => isActive ? `${classes.item} ${classes.active}` : classes.item}>Пользователи</NavLink>
-				</li>
-			</ul>
+			<Menu
+				mode="inline"
+				style={{ height: '100vh', borderRight: 0, background: '#222222' }}
+			>
+				<Menu.Item icon={React.createElement(UserOutlined)}><NavLink to="/profile">Профиль</NavLink></Menu.Item>
+				<Menu.Item><NavLink to="/dialogs">Сообщения</NavLink></Menu.Item>
+				<Menu.Item><NavLink to="/music">Музыка</NavLink></Menu.Item>
+				<Menu.Item><NavLink to="/settings">Настройки</NavLink></Menu.Item>
+				<Menu.Item><NavLink to="/profile">Профиль</NavLink></Menu.Item>
+				<Menu.Item><NavLink to="/users">Пользователи</NavLink></Menu.Item>
+			</Menu>
 		</nav>
     )
 };
