@@ -1,4 +1,4 @@
-import { Dispatch } from "redux";
+import { Dispatch} from "redux";
 import { ResultCodesEnum } from "../../api/api";
 import { usersAPI } from './../../api/usersAPI';
 import { actions, ActionTypes, FilterType } from "./usersReducer";

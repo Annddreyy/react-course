@@ -7,6 +7,7 @@ import { FilterType } from '../../redux/users/usersReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUserFilter, getUsersSelector } from '../../redux/users/userSelectors';
 import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from '../../redux/users/usersThunks';
+import { AppDispatch } from '../../redux/redux-store';
 
 export const Users: React.FC = () => {
     const totalItemsCount = useSelector(getTotalUsersCount);
@@ -17,7 +18,7 @@ export const Users: React.FC = () => {
 
     const followingInProgress = useSelector(getFollowingInProgress);
     
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const setCurrentPage = (currentPage: number) => {
         dispatch(getUsersThunkCreator(currentPage, pageSize, filter));

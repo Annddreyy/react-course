@@ -29,4 +29,4 @@ let mapStateToProps = (state: AppStateType) => {
 export default compose(
     connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, { addNewMessage: actions.addNewMessageActionCreator }),
     withAuthRedirect
-) (Dialogs);
+) (Dialogs) as React.ComponentType<any>;;
