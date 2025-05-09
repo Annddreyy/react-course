@@ -1,8 +1,8 @@
 import React from "react";
-import Login from "./Login.tsx";
-import { loginUserThunkCreator } from "../../redux/auth/authThunks.ts";
+import Login from "./Login";
+import { loginUserThunkCreator } from "../../redux/auth/authThunks";
 import { connect } from "react-redux";
-import { AppStateType } from "../../redux/redux-store.ts";
+import { AppStateType } from "../../redux/redux-store";
 
 class LoginContainer extends React.Component<PropsType> {
 	render() {

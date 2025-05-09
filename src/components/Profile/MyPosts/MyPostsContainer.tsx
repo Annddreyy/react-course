@@ -1,11 +1,11 @@
 import React from "react";
-import { actions } from "../../../redux/profile/profileReducer.ts";
+import { actions } from "../../../redux/profile/profileReducer";
 import { connect } from "react-redux";
-import { AppStateType } from './../../../redux/redux-store.ts';
-import { PostType } from "../../../types/types.ts";
+import { AppStateType } from './../../../redux/redux-store';
+import { PostType } from "../../../types/types";
 import classes from './MyPosts.module.css'
-import Post from "./Post/Post.tsx";
-import ReduxNewPostForm from "./NewPost/NewPostForm.tsx";
+import Post from "./Post/Post";
+import ReduxNewPostForm from "./NewPost/NewPostForm";
 
 class MyPosts extends React.Component<PropsType> {
     render() {

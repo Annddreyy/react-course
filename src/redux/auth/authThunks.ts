@@ -1,10 +1,10 @@
-import { ResultCodeForCaptcha, ResultCodesEnum } from "../../api/api.ts";
-import { authAPI } from './../../api/authAPI.ts';
-import { securityAPI } from './../../api/securityAPI.ts';
+import { ResultCodeForCaptcha, ResultCodesEnum } from "../../api/api";
+import { authAPI } from './../../api/authAPI';
+import { securityAPI } from './../../api/securityAPI';
 import { stopSubmit } from "redux-form";
-import { ActionTypes } from "./authReducer.ts";
+import { ActionTypes } from "./authReducer";
 import { BaseThunkType } from './../redux-store';
-import { actions } from "./authReducer.ts";
+import { actions } from "./authReducer";
 
 export const authUserThunkCreator = (): BaseThunkType<ActionTypes> => async(dispatch) => {
     let response = await authAPI.authUser();

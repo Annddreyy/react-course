@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 import { AppStateType } from '../redux-store';
 
-export const getUsers = (state: AppStateType) => {
+export const getUsersSelector = (state: AppStateType) => {
     return state.usersPage.users;
 };
 
 export const getTempUsers = (state: AppStateType) => {
-    return getUsers(state).filter(user => true);
+    return getUsersSelector(state).filter(user => true);
 }
 
-export const getTempUsersReselect = createSelector(getUsers, (users) => {
+export const getTempUsersReselect = createSelector(getUsersSelector, (users) => {
     users.filter(u => true);
 });
 

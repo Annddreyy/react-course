@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
-import { ResultCodesEnum } from "../../api/api.ts";
-import { usersAPI } from './../../api/usersAPI.ts';
-import { actions, ActionTypes, FilterType } from "./usersReducer.ts";
-import { BaseThunkType } from "../redux-store.ts";
+import { ResultCodesEnum } from "../../api/api";
+import { usersAPI } from './../../api/usersAPI';
+import { actions, ActionTypes, FilterType } from "./usersReducer";
+import { BaseThunkType } from "../redux-store";
 
 type DispatchType = Dispatch<ActionTypes>;
 

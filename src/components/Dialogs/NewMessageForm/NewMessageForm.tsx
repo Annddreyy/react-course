@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './NewMessageForm.module.css';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { Textarea } from '../../common/FormsControls/FormsControls.tsx';
-import { maxLenghtCreator, requiredField } from '../../../utils/validators/validators.ts';
-import { NewMessageFormDataType} from '../Dialogs.tsx';
+import { Textarea } from '../../common/FormsControls/FormsControls';
+import { maxLenghtCreator, requiredField } from '../../../utils/validators/validators';
+import { NewMessageFormDataType} from '../Dialogs';
 
 const maxLenght1000 = maxLenghtCreator(1000);
 

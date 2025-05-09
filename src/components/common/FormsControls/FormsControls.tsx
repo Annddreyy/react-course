@@ -1,7 +1,11 @@
 import React from 'react';
 import classes from './FormsControls.module.css';
 
-export const Textarea = ({input, meta, ...props}) => {
+type OwnProps = {
+    [key: string]: any; // можно уточнить по необходимости
+};
+
+export const Textarea: React.FC<OwnProps> = ({input, meta, ...props}) => {
     const showError = meta.error && meta.touched;
     return (
         <div className={ classes.formControl + " " + (showError ? classes.error : '') }>
@@ -11,7 +15,7 @@ export const Textarea = ({input, meta, ...props}) => {
     )
 }
 
-export const Input = ({input, meta, ...props}) => {
+export const Input: React.FC<OwnProps> = ({input, meta, ...props}) => {
     const showError = meta.error && meta.touched;
     return (
         <div className={ classes.formControl + " " + (showError ? classes.error : '') }>

@@ -1,10 +1,10 @@
-import Dialogs from './Dialogs.tsx'
-import { actions } from "../../redux/messages/messagesReducer.ts";
+import Dialogs from './Dialogs'
+import { actions } from "../../redux/messages/messagesReducer";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.tsx';
-import { AppStateType } from '../../redux/redux-store.ts';
-import { DialogType, MessageType } from '../../types/types.tsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { AppStateType } from '../../redux/redux-store';
+import { DialogType, MessageType } from '../../types/types';
 
 type MapStateToPropsType = {
     dialogs: DialogType[],

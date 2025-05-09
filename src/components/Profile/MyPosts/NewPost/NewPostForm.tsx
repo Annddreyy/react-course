@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './NewPostForm.module.css';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { maxLenghtCreator, requiredField }  from '../../../../utils/validators/validators.ts'
-import { Textarea } from '../../../common/FormsControls/FormsControls.tsx';
-import { NewPostFormDataType } from '../MyPostsContainer.tsx';
+import { maxLenghtCreator, requiredField }  from '../../../../utils/validators/validators'
+import { Textarea } from '../../../common/FormsControls/FormsControls';
+import { NewPostFormDataType } from '../MyPostsContainer';
 
 const maxLenght10 = maxLenghtCreator(10);
 

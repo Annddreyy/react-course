@@ -1,8 +1,8 @@
 import React from "react";
 import classes from './Dialogs.module.css';
-import DialogItem from "./DialogItem/DialogItem.tsx";
-import Message from "./Message/Message.tsx";
-import NewMessageForm from "./NewMessageForm/NewMessageForm.tsx";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
+import NewMessageForm from "./NewMessageForm/NewMessageForm";
 import { DialogType, MessageType } from "../../types/types";
 
 type PropsType = {

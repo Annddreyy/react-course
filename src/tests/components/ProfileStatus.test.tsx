@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProfileStatus from '../../components/Profile/ProfileInfo/ProfileStatus/ProfileStatus';
 

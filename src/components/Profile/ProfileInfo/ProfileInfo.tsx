@@ -1,8 +1,8 @@
 import React from "react";
-import Preloader from '../../common/Preloader/Preloader.tsx';
+import Preloader from '../../common/Preloader/Preloader';
 import classes from './ProfileInfo.module.css';
-import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks.tsx";
-import { ProfileInfoType } from "../Profile.tsx";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import { ProfileInfoType } from "../Profile";
 
 const ProfileInfo = ({ profileInformation, status, updateStatus }: ProfileInfoType) => {
     if (!profileInformation) {

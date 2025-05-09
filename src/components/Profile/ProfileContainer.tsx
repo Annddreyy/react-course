@@ -1,9 +1,9 @@
 import React from 'react';
-import Profile from './Profile.tsx';
+import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getStatusThunkCreator, setProfileThunkCreator, updateStatusThunkCreator } from '../../redux/profile/profileThunks.ts';
+import { getStatusThunkCreator, setProfileThunkCreator, updateStatusThunkCreator } from '../../redux/profile/profileThunks';
 import { withRouter } from '../../hoc/withRouter.js';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.tsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { AppStateType } from '../../redux/redux-store';
 import { ProfileInformationType } from '../../types/types';

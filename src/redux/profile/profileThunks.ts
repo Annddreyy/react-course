@@ -1,7 +1,7 @@
-import { ResultCodesEnum } from "../../api/api.ts";
-import { profileAPI } from './../../api/profileAPI.ts';
-import { ActionTypes, actions } from "./profileReducer.ts";
-import { BaseThunkType } from "../redux-store.ts";
+import { ResultCodesEnum } from "../../api/api";
+import { profileAPI } from './../../api/profileAPI';
+import { ActionTypes, actions } from "./profileReducer";
+import { BaseThunkType } from "../redux-store";
 
 export const setProfileThunkCreator = (userId: number): BaseThunkType<ActionTypes> => async(dispatch) =>  {
     let response = await profileAPI.getProfileInformation(userId)

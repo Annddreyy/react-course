@@ -7,12 +7,11 @@ import { UserType } from "../../../types/types";
 type PropsType = {
     user: UserType,
     followingInProgress: boolean,
-    followingThunkCreator: (userId: number) => void,
-    unfollowingThunkCreator: (userId: number) => void
+    follow: (userId: number) => void,
+    unfollow: (userId: number) => void
 }
 
-const User: React.FC<PropsType> = ({ user, followingInProgress, followingThunkCreator, unfollowingThunkCreator }) => {
-    debugger;
+const User: React.FC<PropsType> = ({ user, followingInProgress, follow, unfollow }) => {
     return (
         <div className={classes.user}>
             <div className={classes['left-part']}>
@@ -24,12 +23,12 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, followingThunkCr
                 { user.followed 
                     ? <button 
                         disabled={ followingInProgress }
-                        onClick={() => { unfollowingThunkCreator(user.id);}}>
+                        onClick={() => { unfollow(user.id);}}>
                             Отписаться
                         </button> 
                     : <button 
                         disabled={ followingInProgress } 
-                        onClick={() => { followingThunkCreator(user.id)} }>
+                        onClick={() => { follow(user.id)} }>
                             Подписаться
                         </button> 
                 }

@@ -1,5 +1,5 @@
-import { actions, ActionTypes } from "./appReducer.ts";
-import { authUserThunkCreator } from "../auth/authThunks.ts";
+import { actions, ActionTypes } from "./appReducer";
+import { authUserThunkCreator } from "../auth/authThunks";
 import { BaseThunkType } from "../redux-store";
 
 export const initializeApp = (): BaseThunkType<ActionTypes> => async(dispatch) => {

@@ -1,6 +1,6 @@
 import React from "react";
-import Header from './Header.tsx'
-import { logoutUserThunkCreator } from "../../redux/auth/authThunks.ts";
+import Header from './Header'
+import { logoutUserThunkCreator } from '../../redux/auth/authThunks';
 import { connect } from "react-redux";
 import { AppStateType } from "../../redux/redux-store";
 
