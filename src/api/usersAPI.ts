@@ -8,9 +8,9 @@ type GetUsersType = {
 };
 
 export const usersAPI = {
-    getUsers(currentPage: number, pageSize: number) {
+    getUsers(currentPage: number, pageSize: number, term = '', friend: null | string = null) {
         return instance
-        .get<GetUsersType>(`users?page=${currentPage}&count=${pageSize}`)
+        .get<GetUsersType>(`users?page=${currentPage}&count=${pageSize}&term=${term}&friend=${friend}`)
         .then(response => response.data);
     },
 

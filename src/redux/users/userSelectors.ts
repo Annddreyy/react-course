@@ -36,3 +36,7 @@ export const getFollowingInProgress = (state: AppStateType) => {
 export const getIsAuth = (state: AppStateType) => {
     return state.auth.isAuth;
 };
+
+export const getUserFilter = (state: AppStateType) => {
+    return state.usersPage.filter;
+}

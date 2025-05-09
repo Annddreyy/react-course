@@ -8,10 +8,15 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: false
+    followingInProgress: false,
+    filter: {
+        term: '',
+        friend: 'null' as null | 'true' | 'false'
+    }
 };
 
 export type InitialStateType = typeof initialState;
+export type FilterType = typeof initialState.filter;
 export type ActionTypes = InferActionsType<typeof actions>;
 
 const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
@@ -39,6 +44,8 @@ const usersReducer = (state = initialState, action: ActionTypes): InitialStateTy
             return { ...state, isFetching: action.isFetching }
         case 'social-network/users/TOOGLE_IS_FOLLOWING_PROGRESS':
             return { ...state, followingInProgress: action.followingInProgress }
+        case 'social-network/users/SET_FILTER':
+            return { ...state, filter: action.filter }
         default:
             return state;
     }
@@ -53,6 +60,7 @@ export const actions = {
     setTotalUsersCount: (totalUsersCount: number) => ({ type: 'social-network/users/SET_TOTAL_USERS_COUNT', totalUsersCount } as const),
     setIsFetching: (isFetching: boolean) => ({ type: 'social-network/users/TOOGLE_IS_FETCHING', isFetching } as const),
     toogleIsFollowingProgress: (followingInProgress: boolean) => ({ type: 'social-network/users/TOOGLE_IS_FOLLOWING_PROGRESS', followingInProgress } as const),
+    setFilter: (filter: FilterType) => ({ type: 'social-network/users/SET_FILTER', filter } as const)
 }
 
 

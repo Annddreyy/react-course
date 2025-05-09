@@ -1,16 +1,17 @@
 import { Dispatch } from "redux";
 import { ResultCodesEnum } from "../../api/api.ts";
 import { usersAPI } from './../../api/usersAPI.ts';
-import { actions, ActionTypes } from "./usersReducer.ts";
+import { actions, ActionTypes, FilterType } from "./usersReducer.ts";
 import { BaseThunkType } from "../redux-store.ts";
 
 type DispatchType = Dispatch<ActionTypes>;
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number): BaseThunkType<ActionTypes> => async(dispatch) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number, filter: FilterType): BaseThunkType<ActionTypes> => async(dispatch) => {
     dispatch(actions.setIsFetching(true));
     dispatch(actions.setCurrentPage(currentPage));
+    dispatch(actions.setFilter(filter));
     
-    let response = await usersAPI.getUsers(currentPage, pageSize);
+    let response = await usersAPI.getUsers(currentPage, pageSize, filter.term, filter.friend);
     
     dispatch(actions.setUsers(response.items));
     dispatch(actions.setTotalUsersCount(response.totalCount));
