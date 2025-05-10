@@ -8,6 +8,7 @@ import appReducer from './app/appReducer';
 import { reducer as formReducer } from 'redux-form';
 
 import { ThunkAction, ThunkDispatch, thunk as thunkMiddleware } from 'redux-thunk';
+import chatReducer from './chat/chatReducer';
 
 // Этот объект надо воспринимать не как связку reducer, а state (3 ветки - 3 reducer)
 // То есть redux автоматически создает state с этими 3 свойствами, так как reducer возвращает state
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
-    app: appReducer
+    app: appReducer,
+    chat: chatReducer
 });
 
 type RootReducerType = typeof rootReducer; // (globalstate: AppStateType) => AppStateTypr

@@ -1,6 +1,5 @@
+import { ChatMessageType } from '../../../../../api/chatAPI';
 import classes from './Message.module.css';
-import img from './../../../../../assets/people.jpeg';
-import { ChatMessageType } from '../../Chat';
 
 export const Message: React.FC<{ message: ChatMessageType} > = ({ message }) => {
     return (

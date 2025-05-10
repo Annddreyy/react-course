@@ -1,21 +1,10 @@
-import { useEffect, useState } from 'react';
-import { ChatMessageType } from '../Chat';
 import { Message } from './Message/Message';
 import classes from './Messages.module.css';
+import { useSelector } from 'react-redux';
+import { AppStateType } from '../../../../redux/redux-store';
 
-export const Messages: React.FC<{ws: WebSocket | null}> = ({ ws }) => {
-    const [messages, setMessages] = useState<ChatMessageType[]>([]); 
-
-    useEffect(() => {
-        function messageHandler(event: MessageEvent) {
-            setMessages((prevMessages) => [...prevMessages, ...JSON.parse(event.data)]);
-        }
-        ws?.addEventListener('message', messageHandler)
-
-        return () => {
-            ws?.removeEventListener('message', messageHandler);
-        }
-    }, [ws])
+export const Messages: React.FC = () => {
+    const messages = useSelector((state: AppStateType) => state.chat.messages);
 
     return (
         <div className={ classes.messages }>
