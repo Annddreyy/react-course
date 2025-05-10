@@ -15,6 +15,7 @@ import { initializeApp } from './redux/app/appThunks';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import ChatPage from './pages/ChatPage/ChatPage';
 
 const { Header, Content, Sider } = Layout;
 
@@ -75,7 +76,7 @@ class App extends React.Component<PropsType> {
             				<Routes>
 								<Route path="/dialogs/*" element={
 									<React.Suspense fallback={<div>loading</div>}>
-										<DialogsContainer />
+										<ChatPage />
 									</React.Suspense>
 								} />
 								<Route path="/profile/:userId?" element={

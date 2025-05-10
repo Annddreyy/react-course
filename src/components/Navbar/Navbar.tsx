@@ -2,7 +2,7 @@ import React from "react";
 import classes from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 const Navbar: React.FC = () => {
     return (

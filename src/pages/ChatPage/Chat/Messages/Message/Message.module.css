@@ -1,0 +1,17 @@
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+};
+
+.item {
+    display: flex;
+    gap: 1em;
+    background-color: red;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
