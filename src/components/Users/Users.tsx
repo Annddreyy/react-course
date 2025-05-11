@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import classes from './Users.module.css';
-import User from './User/User';
-import Paginator from '../common/Paginator/Paginator';
-import UserSearchForm from './UserSearchForm/UserSearchForm';
-import { FilterType } from '../../redux/users/usersReducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUserFilter, getUsersSelector } from '../../redux/users/userSelectors';
-import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from '../../redux/users/usersThunks';
-import { AppDispatch } from '../../redux/redux-store';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Button, DatePicker } from 'antd';
+import { AppDispatch } from '../../redux/redux-store';
+import { getCurrentPage, getFollowingInProgress, getPageSize, getTotalUsersCount, getUserFilter, getUsersSelector } from '../../redux/users/userSelectors';
+import { FilterType } from '../../redux/users/usersReducer';
+import { followingThunkCreator, getUsersThunkCreator, unfollowingThunkCreator } from '../../redux/users/usersThunks';
+import Paginator from '../common/Paginator/Paginator';
+import User from './User/User';
+import classes from './Users.module.css';
+import UserSearchForm from './UserSearchForm/UserSearchForm';
 
 type QueryParamsType = { term?: string, page?: string, friend?: string };
 

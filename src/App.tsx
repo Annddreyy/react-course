@@ -1,21 +1,17 @@
-import React from 'react';
-import classes from './App.module.css';
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Navbar from "./components/Navbar/Navbar";
-import { UsersPage } from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginContainer from './components/Login/LoginContainer';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { withRouter } from './hoc/withRouter.js';
-import Preloader from './components/common/Preloader/Preloader';
-import { AppStateType } from './redux/redux-store';
-import { initializeApp } from './redux/app/appThunks';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu } from 'antd';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { compose } from 'redux';
+import LoginContainer from './components/Login/LoginContainer';
+import Navbar from "./components/Navbar/Navbar";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import { UsersPage } from "./components/Users/UsersContainer";
+import { withRouter } from './hoc/withRouter.js';
 import ChatPage from './pages/ChatPage/ChatPage';
+import { initializeApp } from './redux/app/appThunks';
+import { AppStateType } from './redux/redux-store';
 
 const { Header, Content, Sider } = Layout;
 
@@ -25,7 +21,7 @@ const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
 }));
 
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+//const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component<PropsType> {
 	catchAllUnhandledErrors = (promiseRejectionEvent: PromiseRejectionEvent) => {

@@ -1,7 +1,8 @@
-import { ChatMessageType } from '../../../../../api/chatAPI';
+import { ChatMessageAPIType } from '../../../../../api/chatAPI';
 import classes from './Message.module.css';
+import React from 'react';
 
-export const Message: React.FC<{ message: ChatMessageType} > = ({ message }) => {
+export const Message: React.FC<{ message: ChatMessageAPIType} > = React.memo(({ message }) => {
     return (
         <div className={ classes.item }>
             <div className={ classes.author }>
@@ -11,4 +12,4 @@ export const Message: React.FC<{ message: ChatMessageType} > = ({ message }) => 
             <p>{ message.message }</p>
         </div>
     )
-}
+})

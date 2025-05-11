@@ -27,6 +27,10 @@ input, textarea, button {
     border-radius: 12px;
 }
 
+button:disabled {
+    background-color: var(--light-gray);
+}
+
 input, button {
     border: 1px solid var(--light-gray);
     width: max-content;
