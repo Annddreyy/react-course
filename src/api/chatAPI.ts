@@ -2,9 +2,6 @@ let subscribers = [] as SubscriberType[];
 
 let wsChannel: WebSocket;
 
-function closeConnection() {
-    setTimeout(createChannel, 3000);
-}
 
 function createChannel() {
     wsChannel?.removeEventListener('close', closeConnection);
@@ -12,6 +9,10 @@ function createChannel() {
     wsChannel = new WebSocket('https://social-network.samuraijs.com/handlers/ChatHandler.ashx');
     wsChannel.addEventListener('close', closeConnection);
     wsChannel.addEventListener('message', messageHandler);
+}
+
+function closeConnection() {
+    setTimeout(createChannel, 3000);
 }
 
 function messageHandler(event: MessageEvent) {

@@ -26,18 +26,18 @@ export const actions = {
 
 let _newMessageHandler: ((messages: ChatMessageType[]) => void)| null = null;
 
-const newMessageHandlerCreator = (dispatch: Dispatch) => (messages: ChatMessageType[]) => {
+const newMessageHandlerCreator = (dispatch: Dispatch) => {
     if (_newMessageHandler === null) {
         _newMessageHandler = (messages) => {
             dispatch(actions.setMessages(messages));
         }
     }
-
     return _newMessageHandler;
 }
 
 export const startMessagesListening = (): BaseThunkType<ActionTypes> => async(dispatch) => {
     chatAPI.start();
+    console.log( newMessageHandlerCreator(dispatch) );
     chatAPI.subscribe(newMessageHandlerCreator(dispatch));
 }
 
